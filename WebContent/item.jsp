@@ -61,6 +61,7 @@
 		<div class="container">
 			<a type="button" class="btn btn-primary" href="index.jsp">Back Home</a>
 			<a type="button" class="btn btn-primary" href="category.jsp?category=<%= category %>">Back to <%= category %></a>
+			<a type="button" class="btn btn-primary" href="#" onclick="return newComment()">New Comment</a>
 			<div class="row item">
 			  <div class="col-md-8">
 				<h1><%= item.getTitle()%></h1>
@@ -80,10 +81,8 @@
 									Altertion-Date: <%= comment.getAltertionDate().toGMTString() %>
 							</div>
 						<% } %>
-			  </div>
-			  <div class="col-md-4">
-			   <img src="mysql.jpg" class="img-thumbnail" alt="MySQL"> 
-			  </div>
+			  <div id="newComment"></div>
+			  </div>			   
 			</div>
 		</div>
 
@@ -97,5 +96,18 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			function newComment() {
+				
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						document.getElementById("newComment").innerHTML = xhttp.responseText;
+					}
+				}
+				xhttp.open("GET", "divComment.txt", true);
+				xhttp.send();
+			}
+		</script>
 	</body>
 </html>
