@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.DataHandler;
+
 /**
  * Servlet implementation class HelloWorld
  */
@@ -29,9 +31,11 @@ public class HelloWorld extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		
+		DataHandler handler = new DataHandler();
 		double sqrtvalue = Math.sqrt(4.0);
-		
-		out.println("<html><body><h1 align='center'>Hello World Servlet</h1>" + sqrtvalue + "</body></html>");
+		String text = handler.getCommentByID(6).getText();
+		out.println(text);
+		//out.println("<html><body><h1 align='center'>Hello World Servlet</h1>" + sqrtvalue + "</body></html>");
 	}
 
 	/**

@@ -89,6 +89,13 @@ public class DataHandler {
 		String url = "jdbc:postgresql://localhost:5432/e-commerce?user=postgres&password=user";
 		Connection conn;
 		try {
+			//for connection to database on the tomcat server
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
 			conn = DriverManager.getConnection(url);
 		} catch (Exception e) {
 			System.out.println("closing connection not possible");
