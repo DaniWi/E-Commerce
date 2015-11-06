@@ -17,13 +17,12 @@ public class Comment {
 	@GeneratedValue
 	private int id;
 	private String text;
-	private String author;
+	private int authorID;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationDate = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date altertionDate = new Date();
-	@ManyToOne
-	private Item item;
+	private int itemID;
 
 	public int getId() {
 		return id;
@@ -41,12 +40,12 @@ public class Comment {
 		this.text = text;
 	}
 
-	public String getAuthor() {
-		return author;
+	public int getAuthorID() {
+		return authorID;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorID(int authorID) {
+		this.authorID = authorID;
 	}
 
 	public Date getCreationDate() {
@@ -65,19 +64,18 @@ public class Comment {
 		this.altertionDate = altertionDate;
 	}
 
-	public Item getItem() {
-		return item;
+	public int getItemID() {
+		return itemID;
 	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		return result;
@@ -92,11 +90,6 @@ public class Comment {
 		if (getClass() != obj.getClass())
 			return false;
 		Comment other = (Comment) obj;
-		if (author == null) {
-			if (other.author != null)
-				return false;
-		} else if (!author.equals(other.author))
-			return false;
 		if (id != other.id)
 			return false;
 		if (text == null) {
@@ -106,5 +99,4 @@ public class Comment {
 			return false;
 		return true;
 	}
-
 }

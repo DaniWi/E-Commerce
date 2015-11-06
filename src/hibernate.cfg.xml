@@ -33,6 +33,7 @@
     <!-- Names the annotations -->
     <mapping class="data.Item" />
     <mapping class="data.Comment" />
+    <mapping class="data.User" />
     
   </session-factory>
 </hibernate-configuration> 

@@ -46,6 +46,7 @@ public class DataHandler {
 			// productive DB
 			configuration.addAnnotatedClass(Item.class);
 			configuration.addAnnotatedClass(Comment.class);
+			configuration.addAnnotatedClass(User.class);
 			configuration.configure();
 			serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
@@ -229,14 +230,18 @@ public class DataHandler {
 	public Comment getCommentByID(int id) throws IllegalArgumentException {
 		return this.<Comment> searchForID(id, Comment.class);
 	}
+	
+	public User getUserByID(int id) throws IllegalArgumentException {
+		return this.<User> searchForID(id, User.class);
+	}
 
-	public Item createItem(String title, String description, String author, String category)
+	public Item createItem(String title, String description, int authorID, String category)
 			throws IllegalStateException {
 		// create user instance
 		Item item = new Item();
 		item.setTitle(title);
 		item.setDescription(description);
-		item.setAuthor(author);
+		item.setAuthorID(authorID);
 		item.setCategory(category);
 		item.setAltertionDate(new Date());
 		item.setCreationDate(new Date());
@@ -246,60 +251,40 @@ public class DataHandler {
 		return item;
 	}
 
-	public Comment createComment(int itemID, String text, String author)
-			throws IllegalStateException, IllegalArgumentException {
-		Session session = openSession();
-		Item item;
+	public Comment createComment(int itemID, String text, int authorID)
+			throws IllegalStateException {
 
-		// begin transaction
-		session.beginTransaction();
+		Comment comment = new Comment();
 
-		// search item
+		comment.setText(text);
+		comment.setAuthorID(authorID);
+		comment.setAltertionDate(new Date());
+		comment.setCreationDate(new Date());
+		comment.setItemID(itemID);
+		
+		// save item in database
+		saveObjectToDb(comment);
+		
+		return comment;
+	}
+	
+	public User createUser(String name, String email, String password) throws IllegalStateException {
+
+		// create user instance
+		User user = new User();
+		user.setEmail(email);
+		user.setJoinedDate(new Date());
+		user.setName(name);
 		try {
-			Criteria cr = session.createCriteria(Item.class);
-			cr.add(Restrictions.eq("id", itemID));
-			item = (Item) cr.list().get(0);
+			user.setPassword(PasswordHash.getSaltedHash(password));
 		} catch (Exception e) {
-			// Exception -> rollback
-			session.getTransaction().rollback();
-			System.out.println("itemID in database not found");
-			// close session
-			session.close();
-			throw new IllegalArgumentException("itemID: not in database found", e);
+			System.out.println("Creation of Hash failed");
+			throw new IllegalStateException("Creation of Hash failed", e);
 		}
 
-		// create new comment and save this to database
-		try {
-			Comment comment = new Comment();
-
-			comment.setText(text);
-			comment.setAuthor(author);
-			comment.setAltertionDate(new Date());
-			comment.setCreationDate(new Date());
-			comment.setItem(item);
-
-			// save comment
-			session.save(comment);
-
-			item.getComments().add(comment);
-
-			// update all other objects with post
-			session.update(comment);
-
-			// commit
-			session.getTransaction().commit();
-
-			return comment;
-
-		} catch (Exception e) {
-			// Exception -> rollback
-			session.getTransaction().rollback();
-			System.out.println("saving from comment failed");
-			throw new IllegalStateException("saving from comment failed", e);
-		} finally {
-			// close session
-			session.close();
-		}
+		// save user in database
+		saveObjectToDb(user);
+		return user;
 	}
 
 	public void deleteItem(int itemID) throws IllegalArgumentException {
@@ -310,8 +295,8 @@ public class DataHandler {
 			// delete item from database
 			deleteObjectFromDb(item);
 		} catch (IllegalArgumentException e) {
-			System.out.println("deletion or getting user from ID failed");
-			throw new IllegalArgumentException("deletion or getting user from ID failed", e);
+			System.out.println("deletion or getting item from ID failed");
+			throw new IllegalArgumentException("deletion or getting item from ID failed", e);
 		}
 	}
 
@@ -322,6 +307,19 @@ public class DataHandler {
 
 			// delete comment from database
 			deleteObjectFromDb(comment);
+		} catch (IllegalArgumentException e) {
+			System.out.println("deletion or getting comment from ID failed");
+			throw new IllegalArgumentException("deletion or getting comment from ID failed", e);
+		}
+	}
+	
+	public void deleteUser(int userID) throws IllegalArgumentException {
+		try {
+			// get user
+			User user = getUserByID(userID);
+
+			// delete user from database
+			deleteObjectFromDb(user);
 		} catch (IllegalArgumentException e) {
 			System.out.println("deletion or getting user from ID failed");
 			throw new IllegalArgumentException("deletion or getting user from ID failed", e);
@@ -364,26 +362,25 @@ public class DataHandler {
 			// begin transaction
 			session.beginTransaction();
 
-			Criteria cr = session.createCriteria(Item.class);
-			cr.add(Restrictions.eq("id", itemID));
-			List<Item> results = cr.list();
+			Criteria cr = session.createCriteria(Comment.class);
+			cr.add(Restrictions.eq("itemID", itemID));
+			List<Comment> results = cr.list();
 
 			if (results.size() == 0)
 				throw new IllegalArgumentException(); // item not found with
 														// this id
 
-			Collection<Comment> comments = results.get(0).getComments();
 			// commit
 			session.getTransaction().commit();
 
-			return comments;
+			return results;
 
 		} catch (IllegalArgumentException e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
-			System.out.println("no item with this ID in the database");
+			System.out.println("no comment with this ID in the database");
 			throw new IllegalArgumentException(
-					"no item with this ID in the database");
+					"no comment with this ID in the database");
 		} catch (Exception e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
@@ -393,6 +390,55 @@ public class DataHandler {
 			// close session
 			session.close();
 		}
+	}
+	
+	public User getUserLogin(String name, String password)
+			throws IllegalStateException {
+		Session session = openSession();
+
+		//System.out.println("getUserLogin started");
+		
+		try {
+
+			// begin transaction
+			session.beginTransaction();
+
+			//System.out.println("Transaction started");
+			
+			Criteria cr = session.createCriteria(User.class);
+			cr.add(Restrictions.eq("name", name));
+			List<User> results = cr.list();
+
+			// commit
+			session.getTransaction().commit();
+
+			//System.out.println("Transaction committed");
+			
+			// only one element in the list because the id is unique
+			for (User user : results) {
+				try {
+					//System.out.println("PW check started");
+					if (PasswordHash.check(password, user.getPassword()))
+						//System.out.println("Return user");
+						return user;
+				} catch (Exception e) {
+					//System.out.println("PW check failed");
+					throw new IllegalStateException("Fail by checking the user password");
+				}
+			}
+			//System.out.println("no users found");
+		} catch (HibernateException e) {
+			// Exception -> rollback
+			//System.out.println("Error!!");
+			session.getTransaction().rollback();
+			throw new IllegalStateException(
+					"something went wrong by getting the user");
+		} finally {
+			// close session
+			session.close();
+		}
+		// no appropriate user found in database
+		return null;
 	}
 
 }

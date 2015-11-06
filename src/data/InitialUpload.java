@@ -8,16 +8,19 @@ public class InitialUpload {
 		// get handler
 		DataHandler handler = new DataHandler();
 		
-		int itemID1 = handler.createItem("Hallo1", "Text", "ich", "Werkzeug").getId();
-		int itemID2 = handler.createItem("Hallo2", "Text", "ich", "Kleidung").getId();
-		int itemID3 = handler.createItem("Hallo3", "Text", "ich", "Werkzeug").getId();
+		int userID1 = handler.createUser("Daniel", "kdlfjasljkf", "klajdflkjf").getId();
+		int userID2 = handler.createUser("Lukas", "kdlfjasljkf", "klajdflkjf").getId();
 		
-		int commentID1 = handler.createComment(itemID1, "Comment1", "er").getId();
-		int commentID2= handler.createComment(itemID1, "Comment2", "er").getId();
-		int commentID3 = handler.createComment(itemID1, "Comment3", "er").getId();
-		int commentID4 = handler.createComment(itemID2, "Comment1", "sie").getId();
-		int commentID5 = handler.createComment(itemID2, "Comment2", "sie").getId();
-		int commentID6 = handler.createComment(itemID2, "Comment3", "sie").getId();
+		int itemID1 = handler.createItem("Hallo1", "Text", userID1, "Werkzeug").getId();
+		int itemID2 = handler.createItem("Hallo2", "Text", userID1, "Kleidung").getId();
+		int itemID3 = handler.createItem("Hallo3", "Text", userID2, "Werkzeug").getId();
+		
+		int commentID1 = handler.createComment(itemID1, "Comment1", userID1).getId();
+		int commentID2= handler.createComment(itemID1, "Comment2", userID2).getId();
+		int commentID3 = handler.createComment(itemID1, "Comment3", userID1).getId();
+		int commentID4 = handler.createComment(itemID2, "Comment1", userID1).getId();
+		int commentID5 = handler.createComment(itemID2, "Comment2", userID2).getId();
+		int commentID6 = handler.createComment(itemID2, "Comment3", userID2).getId();
 		
 		Collection<Item> items1 = handler.getAllItemsFromCategory("Werkzeug");
 		Collection<Item> items2 = handler.getAllItemsFromCategory("Kleidung");

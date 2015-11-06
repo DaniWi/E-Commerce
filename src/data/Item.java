@@ -17,15 +17,12 @@ public class Item {
 	private int id;
 	private String title;
 	private String description;
-	private String author;
+	private int authorID;
 	private String category;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationDate = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date altertionDate = new Date();
-	@OneToMany(mappedBy = "")
-	@Cascade({ CascadeType.DELETE })
-	private Collection<Comment> comments = new LinkedList<>();
 
 	public int getId() {
 		return id;
@@ -51,12 +48,12 @@ public class Item {
 		this.description = description;
 	}
 
-	public String getAuthor() {
-		return author;
+	public int getAuthorID() {
+		return authorID;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorID(int authorID) {
+		this.authorID = authorID;
 	}
 
 	public String getCategory() {
@@ -81,14 +78,6 @@ public class Item {
 
 	public void setAltertionDate(Date altertionDate) {
 		this.altertionDate = altertionDate;
-	}
-
-	public Collection<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(Collection<Comment> comments) {
-		this.comments = comments;
 	}
 
 	@Override
