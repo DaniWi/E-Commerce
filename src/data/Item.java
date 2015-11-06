@@ -1,7 +1,12 @@
 package data;
 
 import javax.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedList;
 
 @Entity
 @Table(name = "Item")
@@ -10,16 +15,17 @@ public class Item {
 	@Id
 	@GeneratedValue
 	private int id;
-	@Lob
 	private String title;
-	@Lob
 	private String description;
-	@Lob
 	private String author;
+	private String category;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date creationDaten = new Date();
+	private Date creationDate = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date altertionDate = new Date();
+	@OneToMany(mappedBy = "")
+	@Cascade({ CascadeType.DELETE })
+	private Collection<Comment> comments = new LinkedList<>();
 
 	public int getId() {
 		return id;
@@ -53,12 +59,20 @@ public class Item {
 		this.author = author;
 	}
 
-	public Date getCreationDaten() {
-		return creationDaten;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setCreationDaten(Date creationDaten) {
-		this.creationDaten = creationDaten;
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public Date getAltertionDate() {
@@ -67,6 +81,14 @@ public class Item {
 
 	public void setAltertionDate(Date altertionDate) {
 		this.altertionDate = altertionDate;
+	}
+
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Collection<Comment> comments) {
+		this.comments = comments;
 	}
 
 	@Override
