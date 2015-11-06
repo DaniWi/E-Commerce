@@ -18,6 +18,7 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+	private String rights;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date joinedDate = new Date();
 
@@ -51,6 +52,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRights() {
+		return rights;
+	}
+
+	public void setRights(String rights) {
+		this.rights = rights;
 	}
 
 	public Date getJoinedDate() {

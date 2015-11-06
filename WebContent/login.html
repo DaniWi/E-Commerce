@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- Custom styles for this template -->
+		<link href="css/sticky-footer-navbar.css" rel="stylesheet">
+		
+		<!-- Own css for item design etc -->
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body id="page_login">
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand">Webshop 4</a>
+				</div>
+			</div>
+		</nav>
+	
+		<!-- Begin page content -->
+		<div class="container">
+			<a type="button" class="btn btn-primary" href="index.html">Home</a>
+			<form class="form-signin" action="login.jsp" method="POST">
+			  <h2 class="form-signin-heading">Please sign in</h2>
+			  <label for="inputEmail" class="sr-only">Username</label>
+			  <input type="text" name="Username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+			  <label for="inputPassword" class="sr-only">Password</label>
+			  <input type="password" name="Password" id="inputPassword" class="form-control" placeholder="Password" required>
+			  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			  <a href="register.html" class="btn btn-lg btn-primary btn-block">Register</a>
+			</form>
+
+		</div> <!-- /container -->
+
+		<footer class="footer">
+		  <div class="container">
+			<p class="text-muted">&copy; 2015 Nocker/Witsch. All rights reserved.</p>
+		  </div>
+		</footer>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

@@ -7,21 +7,34 @@
 }
 
 .item h1 {
-	font-size: large;
+	font-size: x-large;
 }
 
 .myinfo {
 	font-style: italic;
 }
 
-.comment {
-	padding-top: 10px;
+.commentinfo {
+	font-style: italic;
+	font-size: x-small;
 }
 
-.comment h2 {
-	font-size: small;
-	font-weight: bold;
+.comment {
+	padding-top: 10px;
+	margin-left: 10%;
+	border-width:5px;	
+    border-bottom-style:double;
 }
+
 .comment p {
 	font-size: small;
 }
+
+form input {
+	margin: 5px 0px;
+}
+
+.description {
+	font-size: large;
+}
+

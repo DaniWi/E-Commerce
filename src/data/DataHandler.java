@@ -275,13 +275,14 @@ public class DataHandler {
 		return comment;
 	}
 	
-	public User createUser(String name, String email, String password) throws IllegalStateException {
+	public User createUser(String name, String email, String password, String rights) throws IllegalStateException {
 
 		// create user instance
 		User user = new User();
 		user.setEmail(email);
 		user.setJoinedDate(new Date());
 		user.setName(name);
+		user.setRights(rights);
 		try {
 			user.setPassword(PasswordHash.getSaltedHash(password));
 		} catch (Exception e) {
@@ -292,6 +293,77 @@ public class DataHandler {
 		// save user in database
 		saveObjectToDb(user);
 		return user;
+	}
+	
+	public Item changeItem(int itemID, String title, String description, int authorID, String category)
+			throws IllegalStateException {		
+		Session session = openSession();
+		try {
+
+			// begin transaction
+			session.beginTransaction();
+
+			Criteria cr = session.createCriteria(Item.class);
+			cr.add(Restrictions.eq("id", itemID));
+			List<Item> results = cr.list();
+			
+			Item item = results.get(0);
+			item.setTitle(title);
+			item.setDescription(description);
+			item.setAuthorID(authorID);
+			item.setCategory(category);
+			item.setAltertionDate(new Date());
+			
+			session.update(item);
+
+			// commit
+			session.getTransaction().commit();
+			
+			return item;
+
+		} catch (Exception e) {
+			// Exception -> rollback
+			session.getTransaction().rollback();
+			throw new IllegalStateException("something went wrong by getting the item list");
+		} finally {
+			// close session
+			session.close();
+		}
+	}
+	
+	public Comment changeComment(int commentID, int itemID, String text, int authorID)
+			throws IllegalStateException {		
+		Session session = openSession();
+		try {
+
+			// begin transaction
+			session.beginTransaction();
+
+			Criteria cr = session.createCriteria(Comment.class);
+			cr.add(Restrictions.eq("id", commentID));
+			List<Comment> results = cr.list();
+			
+			Comment comment = results.get(0);
+			comment.setText(text);
+			comment.setAuthorID(authorID);
+			comment.setAltertionDate(new Date());
+			comment.setItemID(itemID);
+			
+			session.update(comment);
+
+			// commit
+			session.getTransaction().commit();
+			
+			return comment;
+
+		} catch (Exception e) {
+			// Exception -> rollback
+			session.getTransaction().rollback();
+			throw new IllegalStateException("something went wrong by getting the item list");
+		} finally {
+			// close session
+			session.close();
+		}
 	}
 
 	public void deleteItem(int itemID) throws IllegalArgumentException {
@@ -305,7 +377,7 @@ public class DataHandler {
 			System.out.println("deletion or getting item from ID failed");
 			throw new IllegalArgumentException("deletion or getting item from ID failed", e);
 		}
-	}
+	}	
 
 	public void deleteComment(int commentID) throws IllegalArgumentException {
 		try {
@@ -372,10 +444,6 @@ public class DataHandler {
 			Criteria cr = session.createCriteria(Comment.class);
 			cr.add(Restrictions.eq("itemID", itemID));
 			List<Comment> results = cr.list();
-
-			if (results.size() == 0)
-				throw new IllegalArgumentException(); // item not found with
-														// this id
 
 			// commit
 			session.getTransaction().commit();

@@ -43,4 +43,6 @@ Temporary Items
 .apdisk
 /build/
 
-*.classpath
+# Eclipse Core
+.classpath
+*.project
