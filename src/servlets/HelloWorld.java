@@ -30,7 +30,6 @@ public class HelloWorld extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		
 		DataHandler handler = new DataHandler();
 		double sqrtvalue = Math.sqrt(4.0);
 		String text = handler.getCommentByID(6).getText();

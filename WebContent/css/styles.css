@@ -1,0 +1,27 @@
+/* item styles */
+.item {
+	padding: 15px 0;
+	margin-right: auto;
+	margin-left: auto;
+	border-bottom: 1px solid #ccc;
+}
+
+.item h1 {
+	font-size: large;
+}
+
+.myinfo {
+	font-style: italic;
+}
+
+.comment {
+	padding-top: 10px;
+}
+
+.comment h2 {
+	font-size: small;
+	font-weight: bold;
+}
+.comment p {
+	font-size: small;
+}
