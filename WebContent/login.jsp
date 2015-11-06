@@ -8,6 +8,8 @@
 		response.sendRedirect("login.html");
 	} else {
 		session.setAttribute("Username", user.getName());
+		session.setAttribute("ID", user.getId());
+		session.setAttribute("rights", user.getRights());
 		response.sendRedirect("index.jsp");
 	}
 %>

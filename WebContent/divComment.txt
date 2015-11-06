@@ -3,14 +3,14 @@
 	<!-- Textarea -->
 	<div class="form-group">
 	  <div class="col-md-8">                     
-	    <textarea class="form-control" id="textarea" name="textarea">new Comment</textarea>
+	    <textarea class="form-control" id="commentTextArea" name="textarea"></textarea>
 	  </div>
 	</div>
 	
 	<!-- Button -->
 	<div class="form-group">
 	  <div class="col-md-8">
-	    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
+	    <a type="button" class="btn btn-primary" onclick="return saveComment()">Save</a>
 	  </div>
 	</div>
    </form>

@@ -61,7 +61,14 @@
 		<div class="container">
 			<a type="button" class="btn btn-primary" href="index.jsp">Back Home</a>
 			<a type="button" class="btn btn-primary" href="category.jsp?category=<%= category %>">Back to <%= category %></a>
+			<% String ID;
+			if(session.getAttribute("rights") != null) {
+			%>
 			<a type="button" class="btn btn-primary" href="#" onclick="return newComment()">New Comment</a>
+			<%
+			ID = session.getAttribute("ID").toString();
+			} else { ID = ""; } 
+			%>
 			<div class="row item">
 			  <div class="col-md-8">
 				<h1><%= item.getTitle()%></h1>
@@ -71,6 +78,7 @@
 					Creation-Date: <%= item.getCreationDate().toGMTString() %><br>
 					Altertion-Date: <%= item.getAltertionDate().toGMTString() %>
 				</p>
+				<div id="allComments">
 				<% Collection<Comment> comments = handler.getAllCommentsFromItem(item.getId()); %>
 						<% for(Comment comment : comments) { %>
 							<div class="comment">
@@ -81,6 +89,7 @@
 									Altertion-Date: <%= comment.getAltertionDate().toGMTString() %>
 							</div>
 						<% } %>
+				</div>
 			  <div id="newComment"></div>
 			  </div>			   
 			</div>
@@ -107,6 +116,22 @@
 				}
 				xhttp.open("GET", "divComment.txt", true);
 				xhttp.send();
+			}
+			
+			function saveComment() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						document.getElementById("allComments").innerHTML += xhttp.responseText;
+						document.getElementById("newComment").innerHTML = '';
+					}
+				}
+				var comment = document.getElementById("commentTextArea").value;
+				
+				
+				xhttp.open("POST", "newComment.jsp", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send('&comment='+comment+'&id='+'<%= item.getId()%>'+'&authorID='+'<%= ID%>');
 			}
 		</script>
 	</body>
