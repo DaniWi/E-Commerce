@@ -8,6 +8,7 @@
    %>
 <html>
 	<head>
+		<title>Webshop 4</title>
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		
