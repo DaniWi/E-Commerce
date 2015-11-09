@@ -15,8 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import com.sun.ws.rest.api.representation.FormURLEncodedProperties;
-
 import data.Comment;
 import data.DataHandler;
 import data.Item;
@@ -36,7 +34,7 @@ public class RestService {
 	/*
 	 * PUT (create) a new category
 	 */
-	@PUT
+	/*@PUT
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes("application/x-www-form-urlencoded")
 	public String putNewCategory(FormURLEncodedProperties putParam, @PathParam("category") String category, @Context HttpServletRequest request) {
@@ -47,7 +45,7 @@ public class RestService {
 		}
 		
 		return "<html><head><title>Webshop 4</title></head><body>No permission to create new categories!</body></html>";
-	}
+	}*/
 	
 	@DELETE
 	@Produces(MediaType.TEXT_HTML)
@@ -123,7 +121,7 @@ public class RestService {
 	/*
 	 * Change item by ID (HTML of updated item returned)
 	 */
-	@POST
+	/*@POST
 	@Path("/{item_index}")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes("application/x-www-form-urlencoded")
@@ -141,7 +139,7 @@ public class RestService {
 		}
 		
 		return "<html><head><title>Webshop 4</title></head><body>No permission to change items!</body></html>";
-	}
+	}*/
 	
 	/*
 	 * DELETE item by ID
@@ -163,7 +161,7 @@ public class RestService {
 	/*
 	 * PUT (create) new item
 	 */
-	@PUT
+	/*@PUT
 	@Path("/item")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes("application/x-www-form-urlencoded")
@@ -180,7 +178,7 @@ public class RestService {
 		}
 		
 		return "<html><head><title>Webshop 4</title></head><body>No permission to create new items!</body></html>";
-	}
+	}*/
 	
 	/*
 	 * GET all comments of an item (JSON)
@@ -216,7 +214,7 @@ public class RestService {
 	/*
 	 * PUT (create) new comment for specific item
 	 */
-	@PUT
+	/*@PUT
 	@Path("/{item_index}/comment")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes("application/x-www-form-urlencoded")
@@ -233,7 +231,7 @@ public class RestService {
 		}
 		
 		return "<html><head><title>Webshop 4</title></head><body>No permission to create new comments!</body></html>";
-	}
+	}*/
 	
 	/*
 	 * GET comment by ID (JSON)
@@ -267,7 +265,7 @@ public class RestService {
 	/*
 	 * Change comment by ID (HTML of updated comment returned)
 	 */
-	@POST
+	/*@POST
 	@Path("/{item_index}/comment/{comment_index}")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes("application/x-www-form-urlencoded")
@@ -285,7 +283,7 @@ public class RestService {
 		}
 		
 		return "<html><head><title>Webshop 4</title></head><body>No permission to change this comment!</body></html>";
-	}
+	}*/
 	
 	/*
 	 * DELETE comment by ID
