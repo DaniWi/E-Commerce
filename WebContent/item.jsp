@@ -6,6 +6,12 @@
    Item item = handler.getItemByID(itemID);
    int categoryID = Integer.parseInt(request.getParameter("categoryID"));
    Category category = handler.getCategoryByID(categoryID);
+   int userID;
+   if(session.getAttribute("ID") != null) {
+	   userID = Integer.parseInt(session.getAttribute("ID").toString());
+   } else {
+	   userID = 0;
+   }
    %>
 <html>
 	<head>
@@ -63,14 +69,20 @@
 		<div class="container">
 			<a type="button" class="btn btn-primary" href="index.jsp">Back Home</a>
 			<a type="button" class="btn btn-primary" href="category.jsp?categoryID=<%= categoryID %>">Back to <%= category.getName() %></a>
-			<% String ID;
-			if(session.getAttribute("rights") != null) {
-			%>
-			<a type="button" class="btn btn-primary" href="#" onclick="return newComment()">New Comment</a>
 			<%
-			ID = session.getAttribute("ID").toString();
-			} else { ID = ""; } 
-			%>
+			  	String rights = (String) session.getAttribute("rights");
+			    if(rights == null) {
+			    	rights = "null";
+			    } else {
+			    	rights = rights.toString();
+			    }
+		  		if(rights.equals("admin")) {%>
+		  		<a type="button" class="btn btn-primary" href="newItem.jsp">New Item</a>
+		  		<a type="button" class="btn btn-primary" href="changeItem.jsp?itemID=<%= itemID %>">Change Item</a>
+		    <%}%>
+		    <%  if(rights.equals("user")) {%>
+		  		<a type="button" class="btn btn-primary" href="#endOfSite" onclick="return newComment()">New Comment</a>
+		    <%}%>
 			<div class="row item">
 			  <div class="col-md-8">
 				<h1><%= item.getTitle()%></h1>
@@ -83,17 +95,21 @@
 				<div id="allComments">
 				<% Collection<Comment> comments = handler.getAllCommentsFromItem(item.getId()); %>
 						<% for(Comment comment : comments) { %>
-							<div class="comment">
+							<div class="comment" id="<%= comment.getId()%>">
 								<p><%= comment.getText() %></p>
 								<p class="commentinfo">
 									Author: <%= handler.getUserByID(comment.getAuthorID()).getName() %><br>
 									Creation-Date: <%= comment.getCreationDate().toGMTString() %><br>
-									Altertion-Date: <%= comment.getAltertionDate().toGMTString() %>
+									Altertion-Date: <%= comment.getAltertionDate().toGMTString() %><br>
+									<% if(rights.equals("admin") || comment.getAuthorID() == userID) { %>
+										<a type="button" class="btn btn-primary btn-sm" href="#endOfSite" onclick="return changeComment(<%= comment.getId() %>, '<%= comment.getText() %>')">Change Comment</a>
+									<% } %>
 							</div>
 						<% } %>
 				</div>
 			  <div id="newComment"></div>
 			  </div>			   
+			  <a name="endOfSite"></a>
 			</div>
 		</div>
 
@@ -116,7 +132,7 @@
 						document.getElementById("newComment").innerHTML = xhttp.responseText;
 					}
 				}
-				xhttp.open("GET", "divComment.txt", true);
+				xhttp.open("GET", "resources/divComment.txt", true);
 				xhttp.send();
 			}
 			
@@ -133,7 +149,41 @@
 				
 				xhttp.open("POST", "newComment.jsp", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhttp.send('&comment='+comment+'&id='+'<%= item.getId()%>'+'&authorID='+'<%= ID%>');
+				xhttp.send('&comment='+comment+'&id='+'<%= item.getId()%>'+'&authorID='+'<%= userID%>');
+			}
+			
+			function changeComment(commentID, commentText) {
+				
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						document.getElementById("newComment").innerHTML = xhttp.responseText;
+						document.getElementById("changeCommentID").value = commentID;
+						document.getElementById("changeCommentUserID").value = <%= session.getAttribute("ID") %>;
+						document.getElementById("changeCommentTextArea").value = commentText;
+					}
+				}
+				xhttp.open("GET", "resources/divChangeComment.txt", true);
+				xhttp.send();
+			}
+			
+			function changeCommentDB(commentID, commentText) {
+				
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						document.getElementById(commentID).innerHTML = xhttp.responseText;
+						document.getElementById("newComment").innerHTML = '';
+					}
+				}
+				var comment = document.getElementById("changeCommentTextArea").value;
+				var commentID = document.getElementById("changeCommentID").value;
+				var userID = document.getElementById("changeCommentUserID").value;
+				
+				
+				xhttp.open("POST", "changeComment.jsp", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send('&comment='+comment+'&id='+commentID+'&authorID='+userID+'&itemID='+<%= itemID %>);
 			}
 		</script>
 	</body>

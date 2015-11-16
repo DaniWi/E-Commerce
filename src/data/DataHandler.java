@@ -248,6 +248,36 @@ public class DataHandler {
 		return this.<Category> searchForID(id, Category.class);
 	}
 
+	public Category getCategoryByName(String name) throws IllegalArgumentException {
+
+		Session session = openSession();
+
+		try {
+
+			// begin transaction
+			session.beginTransaction();
+
+			Criteria cr = session.createCriteria(Category.class);
+			cr.add(Restrictions.eq("name", name));
+			List<Category> results = cr.list();
+
+			// commit
+			session.getTransaction().commit();
+
+			// only one element in the list because the id is unique
+			return results.get(0);
+
+		} catch (IndexOutOfBoundsException e) {
+			// Exception -> rollback
+			session.getTransaction().rollback();
+			System.out.println("object with this ID is not in the database");
+			throw new IllegalArgumentException("object with this ID is not in the database", e);
+		} finally {
+			// close session
+			session.close();
+		}
+	}
+
 	public Category createCategory(String name) throws IllegalStateException {
 		// create category instance
 		Category cat = new Category();

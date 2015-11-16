@@ -30,13 +30,6 @@
 
 			  <!-- Collect the nav links, forms, and other content for toggling -->
 			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<!--
-					<ul class="nav navbar-nav">
-						 <li>
-							  <a href="http://orf.at" title="ORF">Test Link (orf.at)</a>
-						 </li>
-					</ul>
-					-->
 					<ul class="nav navbar-nav navbar-right">
 						 <% if(session.getAttribute("Username") == null) {%>
 						 <li>
@@ -56,6 +49,18 @@
 	
 		<!-- Begin page content -->
 		<div class="container">
+		  <%
+		  	String rights = (String) session.getAttribute("rights");
+		    if(rights == null) {
+		    	rights = "null";
+		    } else {
+		    	rights = rights.toString();
+		    }
+		  	if(rights.equals("admin")) {%>
+		  	<a type="button" class="btn btn-primary" href="newCategory.html">New Category</a>
+		  	<a type="button" class="btn btn-primary" href="changeCategory.jsp">Change Category</a>
+		  	<a type="button" class="btn btn-primary" href="newItem.jsp">New Item</a>
+		  <%}%>
 		  <div class="page-header">
 			<h1>Hello World, this is Webshop 4.</h1>
 		  </div>

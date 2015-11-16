@@ -61,6 +61,18 @@
 		<!-- Begin page content -->
 		<div class="container">
 			<a type="button" class="btn btn-primary" href="index.jsp">Back Home</a>
+			<%
+			  	String rights = (String) session.getAttribute("rights");
+			    if(rights == null) {
+			    	rights = "null";
+			    } else {
+			    	rights = rights.toString();
+			    }
+		  		if(rights.equals("admin")) {%>
+		  		<a type="button" class="btn btn-primary" href="newCategory.html">New Category</a>
+		  		<a type="button" class="btn btn-primary" href="changeCategory.jsp">Change Category</a>
+		  		<a type="button" class="btn btn-primary" href="newItem.jsp">New Item</a>
+		    <%}%>
 			<div class="page-header">
 				<h2><%= category.getName() %></h2>
 			</div>

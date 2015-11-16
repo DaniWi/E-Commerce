@@ -12,4 +12,5 @@
 		Author: <%= handler.getUserByID(authorID).getName() %><br>
 		Creation-Date: <%= new Date().toGMTString() %><br>
 		Altertion-Date: <%= new Date().toGMTString() %>
+	</p>
 </div>

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,data.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<title>Webshop 4</title>
@@ -24,14 +26,23 @@
 		<!-- Begin page content -->
 		<div class="container">
 			<a type="button" class="btn btn-primary" href="index.jsp">Home</a>
-			<form class="form-signin" action="loginDB.jsp" method="POST">
-			  <h2 class="form-signin-heading">Please sign in</h2>
-			  <label for="inputEmail" class="sr-only">Username</label>
-			  <input type="text" name="Username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-			  <label for="inputPassword" class="sr-only">Password</label>
-			  <input type="password" name="Password" id="inputPassword" class="form-control" placeholder="Password" required>
-			  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-			  <a href="register.html" class="btn btn-lg btn-primary btn-block">Register</a>
+			<form class="form-signin" action="newItemDB.jsp" method="POST">
+			  <h2 class="form-signin-heading">New Item</h2>
+			  <label for="categories">Category: </label>
+			  <select class="form-control" id="categories" name = "Category">
+			  	<% 
+			  		DataHandler handler = new DataHandler();
+			  		Collection<Category> cat = handler.getAllCategories();
+			  		for(Category category : cat) {%>
+				<option><%= category.getName() %></option>
+			  	<% } %>
+			  </select>
+			  <label for="inputTitle" class="sr-only">Title</label>
+			  <input type="text" name="Title" id="inputTitle" class="form-control" placeholder="Title" required autofocus>
+			  <label for="inputDescription" class="sr-only">Description</label>
+			  <textarea class="form-control" rows="5" id="description" name="Description" placeholder="Description"></textarea>
+			  <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+			</div>
 			</form>
 
 		</div> <!-- /container -->
