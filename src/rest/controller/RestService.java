@@ -46,25 +46,35 @@ public class RestService {
 
 		if (getUserFromDB(username, password).getRights().equals("admin")) {
 			// only Administators are allowed to create new Categories //
-			// DataHandler dh = getDataHandler();
-			// dh.createCategory(category)
+			DataHandler dh = getDataHandler();
+			dh.createCategory(category);
 		}
 
 		return "<html><head><title>Webshop 4</title></head><body>No permission to create new categories!</body></html>";
 	}
 
-	@DELETE
+	@POST
 	@Produces(MediaType.TEXT_HTML)
-	public String deleteCategory(@PathParam("category") String category, @FormParam("username") String username,
-			@FormParam("password") String password) {
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public String changeCategory(@PathParam("category") String category, @FormParam("username") String username,
+			@FormParam("password") String password, @FormParam("name") String name) {
 
 		if (getUserFromDB(username, password).getRights().equals("admin")) {
 			// only Administators are allowed to delete Categories
-			// DataHandler dh = getDataHandler();
-			// dh.deleteCategory(category);
+			DataHandler dh = getDataHandler();
+
+			if (dh.getCategoryByName(category) == null) {
+				// category does not exist
+				return "<html><head><title>Webshop 4</title></head><body>Category " + category
+						+ "does not exits!</body></html>";
+			}
+			dh.changeCategory(dh.getCategoryByName(category).getId(), name);
+
+			return "<html><head><title>Webshop 4</title></head><body>Sucessfully changed category name '" + category
+					+ "' to '" + name + "</body></html>";
 		}
 
-		return "<html><head><title>Webshop 4</title></head><body>No permission to delete categories!</body></html>";
+		return "<html><head><title>Webshop 4</title></head><body>No permission to change categories!</body></html>";
 	}
 
 	/*
@@ -75,7 +85,7 @@ public class RestService {
 	public Collection<Item> getAllItemsByCategoryAsJson(@PathParam("category") String category) {
 
 		DataHandler dh = getDataHandler();
-		return dh.getAllItemsFromCategory(category);
+		return dh.getAllItemsFromCategory(dh.getCategoryByName(category).getId());
 
 	}
 
@@ -88,7 +98,7 @@ public class RestService {
 		String html = "<html><head><title>Webshop 4</title></head><body>";
 
 		DataHandler dh = getDataHandler();
-		Collection<Item> items = dh.getAllItemsFromCategory(category);
+		Collection<Item> items = dh.getAllItemsFromCategory(dh.getCategoryByName(category).getId());
 		for (Item item : items) {
 			html += itemToHtml(item);
 		}
@@ -145,9 +155,8 @@ public class RestService {
 			Item item = dh.getItemByID(itemIndex);
 			title = (title == null || title.equals("")) ? item.getTitle() : title;
 			description = (description == null || description.equals("")) ? item.getDescription() : description;
-			// TODO: get category id if DB-table category exists
 
-			dh.changeItem(itemIndex, title, description, item.getAuthorID(), category);
+			dh.changeItem(itemIndex, title, description, item.getAuthorID(), dh.getCategoryByName(category).getId());
 
 			return "<html><head><title>Webshop 4</title></head><body>" + itemToHtml(dh.getItemByID(itemIndex))
 					+ "</body></html>";
@@ -197,7 +206,7 @@ public class RestService {
 			description = (description == null) ? "empty description" : description;
 
 			DataHandler dh = getDataHandler();
-			int id = dh.createItem(title, description, user.getId(), category).getId();
+			int id = dh.createItem(title, description, user.getId(), dh.getCategoryByName(category).getId()).getId();
 
 			return "<html><head><title>Webshop 4</title></head><body>" + itemToHtml(dh.getItemByID(id))
 					+ "</body></html>";
