@@ -1,0 +1,48 @@
+Projekt:
+läuft auf TomCat 8
+Postgres Datenbank mit Hibernate Anbindung
+
+Datenbank:
+Benutzername: postgres
+Passwort: user
+Datenbankname: postgres
+
+Da das War-File zu groß für U2l ist, habe ich es auf Github geladen:
+https://github.com/DaniWi/E-Commerce
+
+1.War-File von Github downloaden und in Eclipse importieren
+2.gradle eclipse ausführen, um alle Dependencies herunterzuladen
+3.in pgAdmin Datenbankfile importieren, damit Datenbank vorhanden ist
+4.In Eclipse Server starten
+5.Im Browser localhost:8080/E-Commerce/ aufrufen, somit landet man auf der Startseite
+6.Im Browser localhost:8080/E-Commerce/rest/* aufrufen, um auf REST-Schnittstelle zuzugreifen
+  Im Browser sind nur GET-Abfragen möglich.
+
+
+REST-Schnittstelle:
+GET rest/{category}						alle Einträge der mitgegebenen Kategorie
+GET rest/{category}/{item_index}				Eintrag mit ItemID=item_index
+GET rest/{category}/{item_index}/comment			alle Kommentare von Item mit ItemID=item_index
+GET rest/{category}/{item_index}/comment/{comment_index}	Kommentar mit CommentID=comment_index
+
+alle GET liefern entweder HTML oder JSON retour, muss nur der accept-Eintrag im Header gesetzt werden
+
+POST rest/{category}						ändert Kategory mit Name in URI zu neuen Name im Parameter
+Parameter: name
+POST rest/{category}/{item_index}				ändert einen Eintrag mit ID=item_index
+Parameter: title, description
+POST rest/{category}/{item_index}/comment/{comment_index}	ändert ein Kommentar mit ID=comment_index
+Parameter: text
+
+PUT rest/{category}						Legt neue Kategorie an mit Name in URI
+PUT rest/{category}/item							Legt neues Item an
+Parameter: title, description
+PUT rest/{category}/{item_index}/comment			legt neues Kommentar an
+Parameter: text
+
+DELETE rest/{category}/{item_index}				löscht Item mit ID=item_index
+DELETE rest/{category}//{item_index}/comment/{comment_index}	löscht Kommentar mit ID=comment_index
+
+
+Bei allen POST,PUT und DELETE Anfragen muss man als Parameter noch zusätzlich username und password mitgegeben, damit
+nicht jeder alle Anfragen ausführen kann!!!!
