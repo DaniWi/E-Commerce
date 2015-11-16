@@ -2,8 +2,9 @@
     pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,data.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <% DataHandler handler = new DataHandler(); 
-   String category = request.getParameter("category");
-   Collection<Item> items = handler.getAllItemsFromCategory(category);
+   int categoryID = Integer.parseInt(request.getParameter("categoryID"));
+   Category category = handler.getCategoryByID(categoryID);
+   Collection<Item> items = handler.getAllItemsFromCategory(categoryID);
    %>
 <html>
 	<head>
@@ -61,12 +62,12 @@
 		<div class="container">
 			<a type="button" class="btn btn-primary" href="index.jsp">Back Home</a>
 			<div class="page-header">
-				<h2><%= category %></h2>
+				<h2><%= category.getName() %></h2>
 			</div>
 			<% for(Item item : items){ %>
 				<div class="row item">
 					<div class="col-md-8">
-						<h1><a href="item.jsp?id=<%= item.getId() %>&category=<%= category %>"><%= item.getTitle()%></a></h1>
+						<h1><a href="item.jsp?id=<%= item.getId() %>&categoryID=<%= categoryID %>"><%= item.getTitle()%></a></h1>
 						<p>Von <%= handler.getUserByID(item.getAuthorID()).getName()%></p>
 						<p class="myinfo"><%= item.getCreationDate().toGMTString() %></p>
 						<% Collection<Comment> comments = handler.getAllCommentsFromItem(item.getId()); %>

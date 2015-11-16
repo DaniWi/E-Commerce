@@ -65,10 +65,12 @@
 				<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				<li><a href="category.jsp?category=Books">Books</a></li>
-				<li><a href="category.jsp?category=Clothing">Clothing</a></li>
-				<li><a href="category.jsp?category=Electronics">Electronics</a></li>
-				<li><a href="category.jsp?category=Sports">Sports</a></li>
+			  	<% 
+			  		DataHandler handler = new DataHandler();
+			  		Collection<Category> cat = handler.getAllCategories();
+			  		for(Category category : cat) {%>
+				<li><a href="category.jsp?categoryID=<%= category.getId()%>"><%= category.getName()%></a></li>
+			  	<% } %>
 			  </ul>
 		  </div>
 		</div>

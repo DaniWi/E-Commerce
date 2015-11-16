@@ -1,12 +1,13 @@
 package data;
 
-import javax.persistence.*;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
-import java.util.Collection;
 import java.util.Date;
-import java.util.LinkedList;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Item")
@@ -18,7 +19,7 @@ public class Item {
 	private String title;
 	private String description;
 	private int authorID;
-	private String category;
+	private int categoryID;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationDate = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
@@ -56,12 +57,12 @@ public class Item {
 		this.authorID = authorID;
 	}
 
-	public String getCategory() {
-		return category;
+	public int getCategoryID() {
+		return categoryID;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCategoryID(int categoryID) {
+		this.categoryID = categoryID;
 	}
 
 	public Date getCreationDate() {

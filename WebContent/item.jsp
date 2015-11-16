@@ -4,7 +4,8 @@
 <% DataHandler handler = new DataHandler(); 
    Integer itemID = Integer.valueOf(request.getParameter("id"));
    Item item = handler.getItemByID(itemID);
-   String category = request.getParameter("category");
+   int categoryID = Integer.parseInt(request.getParameter("categoryID"));
+   Category category = handler.getCategoryByID(categoryID);
    %>
 <html>
 	<head>
@@ -61,7 +62,7 @@
 		<!-- Begin page content -->
 		<div class="container">
 			<a type="button" class="btn btn-primary" href="index.jsp">Back Home</a>
-			<a type="button" class="btn btn-primary" href="category.jsp?category=<%= category %>">Back to <%= category %></a>
+			<a type="button" class="btn btn-primary" href="category.jsp?categoryID=<%= categoryID %>">Back to <%= category.getName() %></a>
 			<% String ID;
 			if(session.getAttribute("rights") != null) {
 			%>
