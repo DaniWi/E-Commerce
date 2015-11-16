@@ -18,10 +18,11 @@ dependencies {
 	//Hashing
 	compile 'commons-codec:commons-codec:1.10'
 	
-	//Jackson
-	compile 'com.sun.jersey:jersey-json:1.19'
+	//Jackson and Jersey
+	compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.22.1'
 	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.1'
 	
-	providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+	compile 'javax.servlet:javax.servlet-api:3.1.0'
+
 	
 }
