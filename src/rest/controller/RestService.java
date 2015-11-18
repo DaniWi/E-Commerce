@@ -14,299 +14,151 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import data.Comment;
-import data.DataHandler;
 import data.Item;
-import data.User;
 
 @Path("/{category}")
 public class RestService {
 
-	private DataHandler dataHandler;
+	// ~~~~~~~~~~ CATEGORY Controller ~~~~~~~~~~ //
 
-	private synchronized DataHandler getDataHandler() {
-		if (dataHandler == null) {
-			dataHandler = new DataHandler();
-		}
-		return dataHandler;
-	}
-
-	private User getUserFromDB(String username, String password) {
-		DataHandler dh = getDataHandler();
-		return dh.getUserLogin(username, password);
-	}
-
-	/*
-	 * PUT (create) a new category
-	 */
-	@PUT
+	// New Category
+	@POST
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public String putNewCategory(@PathParam("category") String category, @FormParam("username") String username,
+	public String postNewCategory(@PathParam("category") String category, @FormParam("username") String username,
 			@FormParam("password") String password) {
 
-		if (getUserFromDB(username, password).getRights().equals("admin")) {
-			// only Administators are allowed to create new Categories //
-			DataHandler dh = getDataHandler();
-			dh.createCategory(category);
-		}
+		return CategoryController.newCategory(category, username, password);
 
-		return "<html><head><title>Webshop 4</title></head><body>No permission to create new categories!</body></html>";
 	}
 
-	@POST
+	// Change Category
+	@PUT
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public String changeCategory(@PathParam("category") String category, @FormParam("username") String username,
 			@FormParam("password") String password, @FormParam("name") String name) {
 
-		if (getUserFromDB(username, password).getRights().equals("admin")) {
-			// only Administators are allowed to delete Categories
-			DataHandler dh = getDataHandler();
-
-			if (dh.getCategoryByName(category) == null) {
-				// category does not exist
-				return "<html><head><title>Webshop 4</title></head><body>Category " + category
-						+ "does not exits!</body></html>";
-			}
-			dh.changeCategory(dh.getCategoryByName(category).getId(), name);
-
-			return "<html><head><title>Webshop 4</title></head><body>Sucessfully changed category name '" + category
-					+ "' to '" + name + "</body></html>";
-		}
-
-		return "<html><head><title>Webshop 4</title></head><body>No permission to change categories!</body></html>";
+		return CategoryController.changeCategory(category, name, username, password);
 	}
 
-	/*
-	 * GET All Items of a Category (JSON)
-	 */
+	// ~~~~~~~~~~ ITEM Controller ~~~~~~~~~~ //
+
+	// GET All Items of a Category (JSON)
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Item> getAllItemsByCategoryAsJson(@PathParam("category") String category) {
 
-		DataHandler dh = getDataHandler();
-		return dh.getAllItemsFromCategory(dh.getCategoryByName(category).getId());
+		return ItemController.getAllItemsOfCategory(category);
 
 	}
 
-	/*
-	 * GET All Items of a Category (HTML)
-	 */
+	// GET All Items of a Category (HTML)
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getAllItemsByCategoryAsHtml(@PathParam("category") String category) {
-		String html = "<html><head><title>Webshop 4</title></head><body>";
-
-		DataHandler dh = getDataHandler();
-		Collection<Item> items = dh.getAllItemsFromCategory(dh.getCategoryByName(category).getId());
-		for (Item item : items) {
-			html += itemToHtml(item);
-		}
-
-		html += "</body></html>";
-
-		return html;
+		return ItemController.getAllItemsOfCategoryAsHtml(category);
 	}
 
-	/*
-	 * Get Item by ID (JSON)
-	 */
+	// Get Item by ID (JSON)
 	@GET
 	@Path("/{item_index}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Item getItemByIdAsJson(@PathParam("category") String category, @PathParam("item_index") Integer itemIndex) {
-		DataHandler dh = getDataHandler();
-		return dh.getItemByID(itemIndex);
+	public Item getItemByIdAsJson(@PathParam("item_index") Integer itemIndex) {
+		return ItemController.getItem(itemIndex);
 	}
 
-	/*
-	 * Get Item by ID (HTML)
-	 */
+	// Get Item by ID (HTML)
 	@GET
 	@Path("/{item_index}")
 	@Produces(MediaType.TEXT_HTML)
 	public String getItemByIdAsHtml(@PathParam("category") String category,
 			@PathParam("item_index") Integer itemIndex) {
-		String html = "<html><head><title>Webshop 4</title></head><body>";
 
-		DataHandler dh = getDataHandler();
-		Item item = dh.getItemByID(itemIndex);
-
-		html += itemToHtml(item) + "</body></html>";
-
-		return html;
+		return ItemController.getItemAsHtml(itemIndex);
 	}
 
-	/*
-	 * Change item by ID (HTML of updated item returned)
-	 */
-	@POST
+	// Change Item
+	@PUT
 	@Path("/{item_index}")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes("application/x-www-form-urlencoded")
-	public String changeItem(@PathParam("category") String category, @PathParam("item_index") Integer itemIndex,
-			@FormParam("username") String username, @FormParam("password") String password,
-			@FormParam("title") String title, @FormParam("description") String description) {
+	public String changeItem(@PathParam("item_index") Integer itemIndex, @FormParam("username") String username,
+			@FormParam("password") String password, @FormParam("title") String title,
+			@FormParam("description") String description) {
 
-		User user = getUserFromDB(username, password);
-
-		if (user.getRights().equals("admin")) {
-			DataHandler dh = getDataHandler();
-			Item item = dh.getItemByID(itemIndex);
-			title = (title == null || title.equals("")) ? item.getTitle() : title;
-			description = (description == null || description.equals("")) ? item.getDescription() : description;
-
-			dh.changeItem(itemIndex, title, description, item.getAuthorID(), dh.getCategoryByName(category).getId());
-
-			return "<html><head><title>Webshop 4</title></head><body>" + itemToHtml(dh.getItemByID(itemIndex))
-					+ "</body></html>";
-		}
-
-		return "<html><head><title>Webshop 4</title></head><body>No permission to change items!</body></html>";
+		return ItemController.changeItem(itemIndex, title, description, username, password);
 	}
 
-	/*
-	 * DELETE item by ID
-	 */
+	// DELETE Item
 	@DELETE
 	@Path("/{item_index}")
 	@Produces(MediaType.TEXT_HTML)
 	public String deleteItem(@PathParam("item_index") Integer itemIndex, @FormParam("username") String username,
 			@FormParam("password") String password) {
 
-		User user = getUserFromDB(username, password);
-
-		if (user.getRights().equals("admin")) {
-			DataHandler dh = getDataHandler();
-			dh.deleteItem(itemIndex);
-
-			return "<html><head><title>Webshop 4</title></head><body>Successfully deleted the item!</body></html>";
-		}
-
-		return "<html><head><title>Webshop 4</title></head><body>No permission to delete items!</body></html>";
+		return ItemController.deleteItem(itemIndex, username, password);
 	}
 
-	/*
-	 * PUT (create) new item
-	 */
-	@PUT
+	// New Item
+	@POST
 	@Path("/item")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public String putNewItem(@PathParam("category") String category, @FormParam("username") String username,
+	public String postNewItem(@PathParam("category") String category, @FormParam("username") String username,
 			@FormParam("password") String password, @FormParam("title") String title,
 			@FormParam("description") String description) {
 
-		User user = getUserFromDB(username, password);
-
-		if (user.getRights().equals("admin")) {
-			if (title == null || title.equals("")) {
-				return "<html><head><title>Webshop 4</title></head><body>New Item has to have a title!</body></html>";
-			}
-			description = (description == null) ? "empty description" : description;
-
-			DataHandler dh = getDataHandler();
-			int id = dh.createItem(title, description, user.getId(), dh.getCategoryByName(category).getId()).getId();
-
-			return "<html><head><title>Webshop 4</title></head><body>" + itemToHtml(dh.getItemByID(id))
-					+ "</body></html>";
-		}
-
-		return "<html><head><title>Webshop 4</title></head><body>No permission to create new items!</body></html>";
+		return ItemController.newItem(title, description, category, username, password);
 	}
 
-	/*
-	 * GET all comments of an item (JSON)
-	 */
+	// ~~~~~~~~~~ COMMENT Controller ~~~~~~~~~~ //
+
+	// GET all comments of an item (JSON)
 	@GET
 	@Path("/{item_index}/comment")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Comment> getAllCommentsByItemAsJson(@PathParam("item_index") Integer itemIndex) {
-
-		DataHandler dh = getDataHandler();
-		return dh.getAllCommentsFromItem(itemIndex);
+		return CommentController.getAllCommentsOfItem(itemIndex);
 	}
 
-	/*
-	 * GET all comments of an item (HTML)
-	 */
+	// GET all comments of an item (HTML)
 	@GET
 	@Path("/{item_index}/comment")
 	@Produces(MediaType.TEXT_HTML)
 	public String getAllCommentsByItemAsHml(@PathParam("item_index") Integer itemIndex) {
-		String html = "<html><head><title>Webshop 4</title></head><body>";
-
-		DataHandler dh = getDataHandler();
-		Collection<Comment> comments = dh.getAllCommentsFromItem(itemIndex);
-		for (Comment comment : comments) {
-			html += commentToHtml(comment);
-		}
-
-		html += "</body></html>";
-		return html;
+		return CommentController.getAllCommentsOfItemAsHtml(itemIndex);
 	}
 
-	/*
-	 * PUT (create) new comment for specific item
-	 */
-
-	@PUT
+	// New Comment
+	@POST
 	@Path("/{item_index}/comment")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public String putNewComment(@PathParam("item_index") Integer itemIndex, @FormParam("username") String username,
+	public String postNewComment(@PathParam("item_index") Integer itemIndex, @FormParam("username") String username,
 			@FormParam("password") String password, @FormParam("text") String text) {
 
-		User user = getUserFromDB(username, password);
-
-		if (user.getRights() != null) {
-			// only admins or users are allowed to create comments
-			if (text == null || text.equals("")) {
-				return "<html><head><title>Webshop 4</title></head><body>New Comment has to have a text!</body></html>";
-			}
-			DataHandler dh = getDataHandler();
-			int id = dh.createComment(itemIndex, text, user.getId()).getId();
-
-			return "<html><head><title>Webshop 4</title></head><body>" + commentToHtml(dh.getCommentByID(id))
-					+ "</body></html>";
-		}
-
-		return "<html><head><title>Webshop 4</title></head><body>No permission to create new comments!</body></html>";
+		return CommentController.newComment(text, itemIndex, username, password);
 	}
 
-	/*
-	 * GET comment by ID (JSON)
-	 */
+	// GET comment by ID (JSON)
 	@GET
 	@Path("/{item_index}/comment/{comment_index}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Comment getCommentByIdAsJson(@PathParam("comment_index") Integer commentIndex) {
-
-		DataHandler dh = getDataHandler();
-		return dh.getCommentByID(commentIndex);
+		return CommentController.getComment(commentIndex);
 	}
 
-	/*
-	 * GET comment by ID (HTML)
-	 */
+	// GET comment by ID (HTML)
 	@GET
 	@Path("/{item_index}/comment/{comment_index}")
 	@Produces(MediaType.TEXT_HTML)
 	public String getCommentByIdAsHtml(@PathParam("comment_index") Integer commentIndex) {
-		String html = "<html><head><title>Webshop 4</title></head><body>";
-
-		DataHandler dh = getDataHandler();
-		Comment comment = dh.getCommentByID(commentIndex);
-
-		html += commentToHtml(comment) + "</body></html>";
-
-		return html;
+		return CommentController.getCommentAsHtml(commentIndex);
 	}
 
-	/*
-	 * Change comment by ID (HTML of updated comment returned)
-	 */
-	@POST
+	// Change Comment
+	@PUT
 	@Path("/{item_index}/comment/{comment_index}")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes("application/x-www-form-urlencoded")
@@ -314,78 +166,17 @@ public class RestService {
 			@PathParam("comment_index") Integer commentIndex, @FormParam("username") String username,
 			@FormParam("password") String password, @FormParam("text") String text) {
 
-		User user = getUserFromDB(username, password);
-		DataHandler dh = getDataHandler();
-		int comment_authorID = dh.getCommentByID(commentIndex).getAuthorID();
-
-		if (user.getRights().equals("admin") || user.getId() == comment_authorID) {
-			// admins or users that created the comment are allowed to change the comment
-			Comment comment = dh.getCommentByID(commentIndex);
-			text = (text == null || text.equals("")) ? comment.getText() : text;
-			dh.changeComment(commentIndex, itemIndex, text, comment.getAuthorID());
-
-			return "<html><head><title>Webshop 4</title></head><body>" + commentToHtml(dh.getCommentByID(commentIndex))
-					+ "</body></html>";
-		}
-
-		return "<html><head><title>Webshop 4</title></head><body>No permission to change this comment!</body></html>";
+		return CommentController.changeComment(commentIndex, itemIndex, text, username, password);
 	}
 
-	/*
-	 * DELETE comment by ID
-	 */
+	// DELETE Comment
 	@DELETE
 	@Path("/{item_index}/comment/{comment_index}")
 	@Produces(MediaType.TEXT_HTML)
 	public String deleteCommentbyId(@PathParam("comment_index") Integer commentIndex,
 			@FormParam("username") String username, @FormParam("password") String password) {
 
-		User user = getUserFromDB(username, password);
-		if (user.getRights().equals("admin")) {
-			DataHandler dh = getDataHandler();
-			dh.deleteItem(commentIndex);
-
-			return "<html><head><title>Webshop 4</title></head><body>Successfully deleted the comment!</body></html>";
-		}
-
-		return "<html><head><title>Webshop 4</title></head><body>No permission to delete comments!</body></html>";
+		return CommentController.deleteComment(commentIndex, username, password);
 	}
 
-	/*
-	 * Returns an item as HTML
-	 */
-	private String itemToHtml(Item item) {
-		String str_item = "";
-
-		DataHandler dh = getDataHandler();
-
-		str_item += "<div class=\"row item\"><div class=\"col-md-8\">";
-		str_item += "<h1>" + item.getTitle() + "</h1>";
-		str_item += "<p>Von " + dh.getUserByID(item.getAuthorID()).getName() + "</p>";
-		str_item += "<p class=\"description\">" + item.getDescription() + "</p>";
-		str_item += "<p class=\"myinfo\">" + DateUtility.toGmtString(item.getCreationDate()) + "</p>";
-		Collection<Comment> comments = dh.getAllCommentsFromItem(item.getId());
-		for (Comment comment : comments) {
-			str_item += commentToHtml(comment);
-		}
-		str_item += "</div></div>";
-
-		return str_item;
-	}
-
-	/*
-	 * Returns a comment as HTML
-	 */
-	private String commentToHtml(Comment comment) {
-		String str_comment = "";
-
-		DataHandler dh = getDataHandler();
-
-		str_comment += "<div class=\"comment\"><p>" + comment.getText() + "</p>";
-		str_comment += "<p class=\"commentinfo\">" + dh.getUserByID(comment.getAuthorID()).getName() + " - "
-				+ DateUtility.toGmtString(comment.getCreationDate()) + "</p>";
-		str_comment += "</div>";
-
-		return str_comment;
-	}
 }

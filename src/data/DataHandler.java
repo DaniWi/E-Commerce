@@ -17,24 +17,28 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 
 /**
- * communication interface between the core and the data layer of our project
- * class to handle all database interactions
+ * communication interface between the core and the data layer of our project class to handle all database interactions
  * 
  * @author Witsch Daniel
  * 
  */
 public class DataHandler {
 
+	// Singleton
+	private static final DataHandler instance = new DataHandler();
+
+	public static DataHandler getInstance() {
+		return instance;
+	}
+
 	private SessionFactory sessionFactory;
 	private ServiceRegistry serviceRegistry;
 	private Connection connection;
 
 	/**
-	 * Constructor for Databasehandler, it is important that only one instance
-	 * of this class will be created
+	 * Constructor for Databasehandler, it is important that only one instance of this class will be created
 	 * 
-	 * @throws IllegalStateException
-	 *             occurs when connection not possible or URI is wrong
+	 * @throws IllegalStateException occurs when connection not possible or URI is wrong
 	 */
 	public DataHandler() throws IllegalStateException {
 
@@ -53,16 +57,20 @@ public class DataHandler {
 			serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
-		} catch (HibernateException e) {
+		}
+		catch (HibernateException e) {
 			System.out.println("Hibernate problems");
 			throw new IllegalStateException("Hibernate problems");
-		} catch (URISyntaxException e) {
+		}
+		catch (URISyntaxException e) {
 			System.out.println("wrong URI to database");
 			throw new IllegalStateException("wrong URI to database");
-		} catch (IllegalStateException e) {
+		}
+		catch (IllegalStateException e) {
 			System.out.println("no connection to database");
 			throw new IllegalStateException("no connection to database");
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println("some connection error");
 		}
 	}
@@ -71,7 +79,8 @@ public class DataHandler {
 		sessionFactory.close();
 		try {
 			connection.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println("closing connection not possible");
 			throw new IllegalStateException("closing connection not possible");
 		}
@@ -81,10 +90,8 @@ public class DataHandler {
 	 * connect to the database
 	 * 
 	 * @return the Connection to the database
-	 * @throws URISyntaxException
-	 *             throw this exception when the URI to the database is wrong
-	 * @throws IllegalStateException
-	 *             throw this exception when it is not possible to connect
+	 * @throws URISyntaxException throw this exception when the URI to the database is wrong
+	 * @throws IllegalStateException throw this exception when it is not possible to connect
 	 */
 	private Connection connectToDatabase() throws URISyntaxException, IllegalStateException {
 
@@ -93,13 +100,15 @@ public class DataHandler {
 		try {
 			// for connection to database on the tomcat server
 			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e1) {
+		}
+		catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			conn = DriverManager.getConnection(url);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println("closing connection not possible");
 			throw new IllegalStateException("closing connection not possible");
 		}
@@ -120,11 +129,9 @@ public class DataHandler {
 	/**
 	 * save an object to the database, when it is an entity
 	 * 
-	 * @param the
-	 *            object of an entity
+	 * @param the object of an entity
 	 * @return the ID of the entity
-	 * @throws IllegalStateException
-	 *             commit failed by saving from object
+	 * @throws IllegalStateException commit failed by saving from object
 	 */
 	private Integer saveObjectToDb(Object obj) throws IllegalStateException {
 
@@ -143,12 +150,14 @@ public class DataHandler {
 
 			return id;
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			System.out.println("saving from object not possible");
 			throw new IllegalStateException("saving from object not possible", e);
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -158,10 +167,8 @@ public class DataHandler {
 	/**
 	 * deletes an object from the database, when it is an entity
 	 * 
-	 * @param obj
-	 *            the object of an entity
-	 * @throws IllegalArgumentException
-	 *             deletion of object failed
+	 * @param obj the object of an entity
+	 * @throws IllegalArgumentException deletion of object failed
 	 */
 	private void deleteObjectFromDb(Object obj) throws IllegalArgumentException {
 
@@ -178,14 +185,16 @@ public class DataHandler {
 			// commit
 			session.getTransaction().commit();
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 
 			// deletion failed
 			System.out.println("deletion of object failed");
 			throw new IllegalArgumentException("deletion of object failed", e);
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -195,12 +204,9 @@ public class DataHandler {
 	 * get an Object from the Database with the id
 	 * 
 	 * @param id
-	 * @param typeParameterClass
-	 *            Class type of the searched class for example (Bar.class)
+	 * @param typeParameterClass Class type of the searched class for example (Bar.class)
 	 * @return Object with the corresponding id
-	 * @throws IllegalStateException
-	 *             commit failed by searching for object, no object with this ID
-	 *             in the database
+	 * @throws IllegalStateException commit failed by searching for object, no object with this ID in the database
 	 */
 	private <T> T searchForID(int id, Class<T> typeParameterClass) throws IllegalArgumentException {
 
@@ -221,12 +227,14 @@ public class DataHandler {
 			// only one element in the list because the id is unique
 			return results.get(0);
 
-		} catch (IndexOutOfBoundsException e) {
+		}
+		catch (IndexOutOfBoundsException e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			System.out.println("object with this ID is not in the database");
 			throw new IllegalArgumentException("object with this ID is not in the database", e);
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -267,12 +275,14 @@ public class DataHandler {
 			// only one element in the list because the id is unique
 			return results.get(0);
 
-		} catch (IndexOutOfBoundsException e) {
+		}
+		catch (IndexOutOfBoundsException e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			System.out.println("object with this ID is not in the database");
 			throw new IllegalArgumentException("object with this ID is not in the database", e);
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -330,7 +340,8 @@ public class DataHandler {
 		user.setRights(rights);
 		try {
 			user.setPassword(PasswordHash.getSaltedHash(password));
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println("Creation of Hash failed");
 			throw new IllegalStateException("Creation of Hash failed", e);
 		}
@@ -366,11 +377,13 @@ public class DataHandler {
 
 			return item;
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by getting the item list");
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -400,11 +413,13 @@ public class DataHandler {
 
 			return comment;
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by getting the item list");
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -431,11 +446,13 @@ public class DataHandler {
 
 			return cat;
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by getting the category list");
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -452,7 +469,8 @@ public class DataHandler {
 
 			// delete item from database
 			deleteObjectFromDb(item);
-		} catch (IllegalArgumentException e) {
+		}
+		catch (IllegalArgumentException e) {
 			System.out.println("deletion or getting item from ID failed");
 			throw new IllegalArgumentException("deletion or getting item from ID failed", e);
 		}
@@ -465,7 +483,8 @@ public class DataHandler {
 
 			// delete comment from database
 			deleteObjectFromDb(comment);
-		} catch (IllegalArgumentException e) {
+		}
+		catch (IllegalArgumentException e) {
 			System.out.println("deletion or getting comment from ID failed");
 			throw new IllegalArgumentException("deletion or getting comment from ID failed", e);
 		}
@@ -478,7 +497,8 @@ public class DataHandler {
 
 			// delete user from database
 			deleteObjectFromDb(user);
-		} catch (IllegalArgumentException e) {
+		}
+		catch (IllegalArgumentException e) {
 			System.out.println("deletion or getting user from ID failed");
 			throw new IllegalArgumentException("deletion or getting user from ID failed", e);
 		}
@@ -500,11 +520,13 @@ public class DataHandler {
 
 			return results;
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by getting the category list");
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -527,11 +549,13 @@ public class DataHandler {
 
 			return results;
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by getting the item list");
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -555,16 +579,19 @@ public class DataHandler {
 
 			return results;
 
-		} catch (IllegalArgumentException e) {
+		}
+		catch (IllegalArgumentException e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			System.out.println("no comment with this ID in the database");
 			throw new IllegalArgumentException("no comment with this ID in the database");
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// Exception -> rollback
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by getting the comment list");
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
@@ -598,18 +625,21 @@ public class DataHandler {
 					if (PasswordHash.check(password, user.getPassword()))
 						// System.out.println("Return user");
 						return user;
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					// System.out.println("PW check failed");
 					throw new IllegalStateException("Fail by checking the user password");
 				}
 			}
 			// System.out.println("no users found");
-		} catch (HibernateException e) {
+		}
+		catch (HibernateException e) {
 			// Exception -> rollback
 			// System.out.println("Error!!");
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by getting the user");
-		} finally {
+		}
+		finally {
 			// close session
 			session.close();
 		}
