@@ -71,7 +71,7 @@
 			  </button>
 			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 			  	<% 
-			  		DataHandler handler = new DataHandler();
+			  		DataHandler handler = DataHandler.getInstance();
 			  		Collection<Category> cat = handler.getAllCategories();
 			  		for(Category category : cat) {%>
 				<li><a href="category.jsp?categoryID=<%= category.getId()%>"><%= category.getName()%></a></li>

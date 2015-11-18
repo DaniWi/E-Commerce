@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,data.*"%>
 <%  
-	DataHandler handler = new DataHandler();
+	DataHandler handler = DataHandler.getInstance();
 	int commentID = Integer.valueOf(request.getParameter("id"));
 	int authorID = Integer.valueOf(request.getParameter("authorID"));
 	int itemID = Integer.valueOf(request.getParameter("itemID"));

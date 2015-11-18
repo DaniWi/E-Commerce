@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,data.*"%>
 <%  
-	DataHandler handler = new DataHandler();
+	DataHandler handler = DataHandler.getInstance();
 	User user = handler.getUserLogin(request.getParameter("Username"), request.getParameter("Password"));
 	if(user == null) {
 		response.sendRedirect("login.html");
