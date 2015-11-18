@@ -40,7 +40,7 @@ public class DataHandler {
 	 * 
 	 * @throws IllegalStateException occurs when connection not possible or URI is wrong
 	 */
-	public DataHandler() throws IllegalStateException {
+	private DataHandler() throws IllegalStateException {
 
 		try {
 			// connect to db
