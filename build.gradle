@@ -5,6 +5,7 @@ apply plugin: 'java'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -23,6 +24,15 @@ dependencies {
 	compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.1'
 	
 	compile 'javax.servlet:javax.servlet-api:3.1.0'
-
 	
+	testCompile 'org.testng:testng:6+'
+	testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2+'
+	testCompile 'org.seleniumhq.selenium:selenium-support:2+'
+
+}
+
+test {
+	useTestNG { useDefaultListeners = true }
+	testLogging { events 'started', 'passed', 'skipped', 'failed' }
+	ignoreFailures = true
 }
