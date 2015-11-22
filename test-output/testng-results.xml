@@ -1,49 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" total="14" passed="14">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="36793" started-at="2015-11-21T20:18:11Z" finished-at="2015-11-21T20:18:48Z">
+  <suite name="Suite" duration-ms="2041" started-at="2015-11-22T15:07:18Z" finished-at="2015-11-22T15:07:20Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="36793" started-at="2015-11-21T20:18:11Z" finished-at="2015-11-21T20:18:48Z">
-      <class name="selenium.AdminBrowserTest">
-        <test-method status="PASS" signature="startBrowser()[pri:0, instance:selenium.AdminBrowserTest@82d64]" name="startBrowser" is-config="true" duration-ms="9313" started-at="2015-11-21T21:18:11Z" finished-at="2015-11-21T21:18:21Z">
+    <test name="Test" duration-ms="2041" started-at="2015-11-22T15:07:18Z" finished-at="2015-11-22T15:07:20Z">
+      <class name="rest.PUT">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:rest.PUT@12fad11]" name="beforeClass" is-config="true" duration-ms="2" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="adminRightsTest()[pri:0, instance:selenium.AdminBrowserTest@82d64]" name="adminRightsTest" duration-ms="3228" started-at="2015-11-21T21:18:21Z" finished-at="2015-11-21T21:18:24Z">
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="changeComment()[pri:0, instance:rest.PUT@12fad11]" name="changeComment" duration-ms="223" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- adminRightsTest -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:selenium.AdminBrowserTest@82d64]" name="closeBrowser" is-config="true" duration-ms="13" started-at="2015-11-21T21:18:24Z" finished-at="2015-11-21T21:18:24Z">
+        </test-method> <!-- changeComment -->
+        <test-method status="PASS" signature="changeItem()[pri:0, instance:rest.PUT@12fad11]" name="changeItem" duration-ms="162" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- closeBrowser -->
-        <test-method status="PASS" signature="startBrowser()[pri:0, instance:selenium.AdminBrowserTest@82d64]" name="startBrowser" is-config="true" duration-ms="8418" started-at="2015-11-21T21:18:24Z" finished-at="2015-11-21T21:18:32Z">
+        </test-method> <!-- changeItem -->
+        <test-method status="PASS" signature="changeCategory()[pri:0, instance:rest.PUT@12fad11]" name="changeCategory" duration-ms="150" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="authenticationTest()[pri:0, instance:selenium.AdminBrowserTest@82d64]" name="authenticationTest" duration-ms="2512" started-at="2015-11-21T21:18:32Z" finished-at="2015-11-21T21:18:35Z">
+        </test-method> <!-- changeCategory -->
+      </class> <!-- rest.PUT -->
+      <class name="rest.POST">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:rest.POST@1698539]" name="beforeClass" is-config="true" duration-ms="2" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- authenticationTest -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:selenium.AdminBrowserTest@82d64]" name="closeBrowser" is-config="true" duration-ms="9" started-at="2015-11-21T21:18:35Z" finished-at="2015-11-21T21:18:35Z">
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="newCategory()[pri:0, instance:rest.POST@1698539]" name="newCategory" duration-ms="182" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- closeBrowser -->
-        <test-method status="PASS" signature="startBrowser()[pri:0, instance:selenium.AdminBrowserTest@82d64]" name="startBrowser" is-config="true" duration-ms="8327" started-at="2015-11-21T21:18:35Z" finished-at="2015-11-21T21:18:43Z">
+        </test-method> <!-- newCategory -->
+        <test-method status="PASS" signature="newComment()[pri:0, instance:rest.POST@1698539]" name="newComment" duration-ms="152" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:20Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="newItemTest()[pri:0, instance:selenium.AdminBrowserTest@82d64]" name="newItemTest" duration-ms="4927" started-at="2015-11-21T21:18:43Z" finished-at="2015-11-21T21:18:48Z">
+        </test-method> <!-- newComment -->
+        <test-method status="PASS" signature="newItem()[pri:0, instance:rest.POST@1698539]" name="newItem" duration-ms="154" started-at="2015-11-22T16:07:20Z" depends-on-methods="rest.POST.newCategory" finished-at="2015-11-22T16:07:20Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- newItemTest -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:selenium.AdminBrowserTest@82d64]" name="closeBrowser" is-config="true" duration-ms="19" started-at="2015-11-21T21:18:48Z" finished-at="2015-11-21T21:18:48Z">
+        </test-method> <!-- newItem -->
+      </class> <!-- rest.POST -->
+      <class name="rest.GET">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:rest.GET@19b4d0f]" name="beforeClass" is-config="true" duration-ms="151" started-at="2015-11-22T16:07:18Z" finished-at="2015-11-22T16:07:18Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- closeBrowser -->
-      </class> <!-- selenium.AdminBrowserTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="categoryHTML()[pri:0, instance:rest.GET@19b4d0f]" name="categoryHTML" duration-ms="705" started-at="2015-11-22T16:07:18Z" finished-at="2015-11-22T16:07:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- categoryHTML -->
+        <test-method status="PASS" signature="categoryJSON()[pri:0, instance:rest.GET@19b4d0f]" name="categoryJSON" duration-ms="11" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- categoryJSON -->
+        <test-method status="PASS" signature="allCommentsJSON()[pri:0, instance:rest.GET@19b4d0f]" name="allCommentsJSON" duration-ms="10" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- allCommentsJSON -->
+        <test-method status="PASS" signature="commentJSON()[pri:0, instance:rest.GET@19b4d0f]" name="commentJSON" duration-ms="8" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- commentJSON -->
+        <test-method status="PASS" signature="itemJSON()[pri:0, instance:rest.GET@19b4d0f]" name="itemJSON" duration-ms="23" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itemJSON -->
+        <test-method status="PASS" signature="allCommentsHTML()[pri:0, instance:rest.GET@19b4d0f]" name="allCommentsHTML" duration-ms="32" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- allCommentsHTML -->
+        <test-method status="PASS" signature="itemHTML()[pri:0, instance:rest.GET@19b4d0f]" name="itemHTML" duration-ms="25" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itemHTML -->
+        <test-method status="PASS" signature="commentHTML()[pri:0, instance:rest.GET@19b4d0f]" name="commentHTML" duration-ms="9" started-at="2015-11-22T16:07:19Z" finished-at="2015-11-22T16:07:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- commentHTML -->
+      </class> <!-- rest.GET -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <test name="Test(failed)">
+    <classes>
+      <class name="rest.GET">
+        <methods>
+          <include name="categoryHTML"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- rest.GET -->
+      <class name="rest.POST">
+        <methods>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- rest.POST -->
+      <class name="rest.PUT">
+        <methods>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- rest.PUT -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
