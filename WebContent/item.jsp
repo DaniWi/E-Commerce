@@ -80,7 +80,7 @@
 		  		<a type="button" class="btn btn-primary" href="newItem.jsp">New Item</a>
 		  		<a type="button" class="btn btn-primary" href="changeItem.jsp?itemID=<%= itemID %>">Change Item</a>
 		    <%}%>
-		    <%  if(rights.equals("user")) {%>
+		    <%  if(rights.equals("user") || rights.equals("admin")) {%>
 		  		<a type="button" class="btn btn-primary" href="#endOfSite" onclick="return newComment()">New Comment</a>
 		    <%}%>
 			<div class="row item">

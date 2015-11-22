@@ -49,10 +49,12 @@ public class DataHandler {
 			// create session factory
 			Configuration configuration = new Configuration();
 			// productive DB
-			configuration.addAnnotatedClass(Item.class);
-			configuration.addAnnotatedClass(Comment.class);
-			configuration.addAnnotatedClass(User.class);
-			configuration.addAnnotatedClass(Category.class);
+			/*
+			 * configuration.addAnnotatedClass(Item.class);
+			 * configuration.addAnnotatedClass(Comment.class);
+			 * configuration.addAnnotatedClass(User.class);
+			 * configuration.addAnnotatedClass(Category.class);
+			 */
 			configuration.configure();
 			serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
