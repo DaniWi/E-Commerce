@@ -4,52 +4,71 @@ import java.util.Collection;
 
 import data.Comment;
 import data.DataHandler;
+import data.IDataHandler;
 import data.User;
 
 public class CommentController {
 
-	public static Comment getComment(int commentIndex) {
-		return DataHandler.getInstance().getCommentByID(commentIndex);
+	IDataHandler databaseHandler;
+	HtmlUtility htmlUtility = new HtmlUtility();
+
+	public IDataHandler getDatabaseHandler() {
+		return databaseHandler;
 	}
 
-	public static String getCommentAsHtml(int commentIndex) {
-
-		Comment comment = DataHandler.getInstance().getCommentByID(commentIndex);
-
-		return HtmlUtility.HtmlWrap(HtmlUtility.commentToHtml(comment));
+	public void setDatabaseHandler(IDataHandler databaseHandler) {
+		this.databaseHandler = databaseHandler;
+		this.htmlUtility.setDatabaseHandler(databaseHandler);
 	}
 
-	public static String changeComment(int commentIndex, int itemIndex, String text, String username, String password) {
-		DataHandler dh = DataHandler.getInstance();
+	public void setDatabaseHandler() {
+		this.databaseHandler = DataHandler.getInstance();
+		this.htmlUtility.setDatabaseHandler(databaseHandler);
+	}
+
+	public Comment getComment(int commentIndex) {
+		return databaseHandler.getCommentByID(commentIndex);
+	}
+
+	public String getCommentAsHtml(int commentIndex) {
+
+		Comment comment = databaseHandler.getCommentByID(commentIndex);
+
+		return htmlUtility.HtmlWrap(htmlUtility.commentToHtml(comment));
+	}
+
+	public String changeComment(int commentIndex, int itemIndex, String text, String username, String password) {
+		IDataHandler dh = databaseHandler;
 		User user = dh.getUserLogin(username, password);
 		int comment_authorID = dh.getCommentByID(commentIndex).getAuthorID();
 
 		if (user.getRights().equals("admin") || user.getId() == comment_authorID) {
-			// admins or users that created the comment are allowed to change the comment
+			// admins or users that created the comment are allowed to change
+			// the comment
 			Comment comment = dh.getCommentByID(commentIndex);
 			text = (text == null || text.equals("")) ? comment.getText() : text;
 			dh.changeComment(commentIndex, itemIndex, text, comment.getAuthorID());
 
-			return HtmlUtility.HtmlWrap(HtmlUtility.commentToHtml(dh.getCommentByID(commentIndex)));
+			return htmlUtility.HtmlWrap(htmlUtility.commentToHtml(dh.getCommentByID(commentIndex)));
 		}
 
-		return HtmlUtility.HtmlWrap("No permission to change this comment!");
+		return htmlUtility.HtmlWrap("No permission to change this comment!");
 	}
 
-	public static String deleteComment(int commentIndex, String username, String password) {
-		DataHandler dh = DataHandler.getInstance();
+	public String deleteComment(int commentIndex, String username, String password) {
+		IDataHandler dh = databaseHandler;
 		if (dh.getUserLogin(username, password).getRights().equals("admin")) {
 			dh.deleteItem(commentIndex);
 
-			return HtmlUtility.HtmlWrap("Successfully deleted the comment!");
+			return htmlUtility.HtmlWrap("Successfully deleted the comment!");
 		}
 
-		return HtmlUtility.HtmlWrap("No permission to delete comments!");
+		return htmlUtility.HtmlWrap("No permission to delete comments!");
 	}
 
-	public static String newComment(String text, int itemIndex, String username, String password) {
+	public String newComment(String text, int itemIndex, String username, String password) {
 
-		DataHandler dh = DataHandler.getInstance();
+		IDataHandler dh = databaseHandler;
 		User user = dh.getUserLogin(username, password);
 
 		if (user.getRights() != null) {
@@ -59,24 +78,24 @@ public class CommentController {
 			}
 			int id = dh.createComment(itemIndex, text, user.getId()).getId();
 
-			return HtmlUtility.HtmlWrap(HtmlUtility.commentToHtml(dh.getCommentByID(id)));
+			return htmlUtility.HtmlWrap(htmlUtility.commentToHtml(dh.getCommentByID(id)));
 		}
 
-		return HtmlUtility.HtmlWrap("No permission to create new comments!");
+		return htmlUtility.HtmlWrap("No permission to create new comments!");
 	}
 
-	public static Collection<Comment> getAllCommentsOfItem(int itemIndex) {
-		return DataHandler.getInstance().getAllCommentsFromItem(itemIndex);
+	public Collection<Comment> getAllCommentsOfItem(int itemIndex) {
+		return databaseHandler.getAllCommentsFromItem(itemIndex);
 	}
 
-	public static String getAllCommentsOfItemAsHtml(int itemIndex) {
+	public String getAllCommentsOfItemAsHtml(int itemIndex) {
 		String html = "";
 
-		Collection<Comment> comments = DataHandler.getInstance().getAllCommentsFromItem(itemIndex);
+		Collection<Comment> comments = databaseHandler.getAllCommentsFromItem(itemIndex);
 		for (Comment comment : comments) {
-			html += HtmlUtility.commentToHtml(comment);
+			html += htmlUtility.commentToHtml(comment);
 		}
 
-		return HtmlUtility.HtmlWrap(html);
+		return htmlUtility.HtmlWrap(html);
 	}
 }

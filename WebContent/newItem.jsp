@@ -31,7 +31,7 @@
 			  <label for="categories">Category: </label>
 			  <select class="form-control" id="categories" name = "Category">
 			  	<% 
-			  		DataHandler handler = DataHandler.getInstance();
+			  		IDataHandler handler = DataHandler.getInstance();
 			  		Collection<Category> cat = handler.getAllCategories();
 			  		for(Category category : cat) {%>
 				<option><%= category.getName() %></option>

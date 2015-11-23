@@ -3,22 +3,35 @@
 <suite name="Failed suite [Suite]">
   <test name="Test(failed)">
     <classes>
-      <class name="rest.GET">
+      <class name="rest_integration.GET">
         <methods>
+          <include name="commentHTML"/>
+          <include name="beforeClass"/>
+          <include name="allCommentsJSON"/>
+          <include name="itemJSON"/>
           <include name="categoryHTML"/>
-          <include name="beforeClass"/>
+          <include name="commentJSON"/>
+          <include name="categoryJSON"/>
+          <include name="allCommentsHTML"/>
+          <include name="itemHTML"/>
         </methods>
-      </class> <!-- rest.GET -->
-      <class name="rest.POST">
+      </class> <!-- rest_integration.GET -->
+      <class name="rest_integration.POST">
         <methods>
           <include name="beforeClass"/>
+          <include name="newComment"/>
+          <include name="newItem"/>
+          <include name="newCategory"/>
         </methods>
-      </class> <!-- rest.POST -->
-      <class name="rest.PUT">
+      </class> <!-- rest_integration.POST -->
+      <class name="rest_integration.PUT">
         <methods>
+          <include name="changeCategory"/>
           <include name="beforeClass"/>
+          <include name="changeComment"/>
+          <include name="changeItem"/>
         </methods>
-      </class> <!-- rest.PUT -->
+      </class> <!-- rest_integration.PUT -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

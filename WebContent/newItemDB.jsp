@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,data.*"%>
 <%  
-	DataHandler handler = DataHandler.getInstance();
+	IDataHandler handler = DataHandler.getInstance();
 	String title = request.getParameter("Title");
 	String category = request.getParameter("Category");
 	Category cat = handler.getCategoryByName(category);

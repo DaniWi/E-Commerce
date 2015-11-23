@@ -31,7 +31,7 @@
 			  <label for="categories">Category: </label>
 			  <select class="form-control" id="categories" name = "Category">
 			  	<% 
-			  		DataHandler handler = DataHandler.getInstance();
+			  		IDataHandler handler = DataHandler.getInstance();
 			  		Item item = handler.getItemByID(Integer.parseInt(request.getParameter("itemID")));
 			  	%>
 			  	<option><%= handler.getCategoryByID(item.getCategoryID()).getName() %></option>

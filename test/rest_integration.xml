@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+  <test name="Rest Integration Tests">
+    <classes>
+      <class name="rest_integration.GET"/>
+      <class name="rest_integration.PUT"/>
+      <class name="rest_integration.POST"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

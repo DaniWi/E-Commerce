@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+  <test name="Rest Unit Tests">
+    <classes>
+      <class name="rest_unit.CategoryControllerTest"/>
+      <class name="rest_unit.ItemControllerTest"/>
+      <class name="rest_unit.CommentControllerTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

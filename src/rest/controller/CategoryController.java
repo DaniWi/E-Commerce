@@ -1,35 +1,51 @@
 package rest.controller;
 
 import data.DataHandler;
+import data.IDataHandler;
 
 public class CategoryController {
+	IDataHandler databaseHandler;
+	HtmlUtility htmlUtility = new HtmlUtility();
 
-	public static String newCategory(String category, String username, String password) {
-		if (DataHandler.getInstance().getUserLogin(username, password).getRights().equals("admin")) {
-			// only Administators are allowed to create new Categories
-			DataHandler.getInstance().createCategory(category);
-
-			return HtmlUtility.HtmlWrap("Successfully created category" + category);
-		}
-
-		return HtmlUtility.HtmlWrap("No permission to create new categories!");
+	public IDataHandler getDatabaseHandler() {
+		return databaseHandler;
 	}
 
-	public static String changeCategory(String category, String newName, String username, String password) {
-		DataHandler dh = DataHandler.getInstance();
-		if (dh.getUserLogin(username, password).getRights().equals("admin")) {
-			// only Administators are allowed to delete Categories
+	public void setDatabaseHandler(IDataHandler databaseHandler) {
+		this.databaseHandler = databaseHandler;
+		this.htmlUtility.setDatabaseHandler(databaseHandler);
+	}
 
-			if (dh.getCategoryByName(category) == null) {
-				// category does not exist
-				return HtmlUtility.HtmlWrap("Category " + category + "does not exits");
-			}
-			dh.changeCategory(dh.getCategoryByName(category).getId(), newName);
+	public void setDatabaseHandler() {
+		this.databaseHandler = DataHandler.getInstance();
+		this.htmlUtility.setDatabaseHandler(databaseHandler);
+	}
 
-			return HtmlUtility.HtmlWrap("Sucessfully changed category name '" + category + "' to '" + newName);
+	public String newCategory(String category, String username, String password) {
+		if (databaseHandler.getUserLogin(username, password).getRights().equals("admin")) {
+			// only Administators are allowed to create new Categories
+			databaseHandler.createCategory(category);
+
+			return htmlUtility.HtmlWrap("Successfully created category " + category);
 		}
 
-		return HtmlUtility.HtmlWrap("No permission to change categories!");
+		return htmlUtility.HtmlWrap("No permission to create new categories!");
+	}
+
+	public String changeCategory(String category, String newName, String username, String password) {
+		if (databaseHandler.getUserLogin(username, password).getRights().equals("admin")) {
+			// only Administators are allowed to delete Categories
+
+			if (databaseHandler.getCategoryByName(category) == null) {
+				// category does not exist
+				return htmlUtility.HtmlWrap("Category " + category + " does not exits");
+			}
+			databaseHandler.changeCategory(databaseHandler.getCategoryByName(category).getId(), newName);
+
+			return htmlUtility.HtmlWrap("Sucessfully changed category name '" + category + "' to '" + newName);
+		}
+
+		return htmlUtility.HtmlWrap("No permission to change categories!");
 	}
 
 }

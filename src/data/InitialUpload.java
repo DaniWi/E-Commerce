@@ -6,7 +6,7 @@ public class InitialUpload {
 
 	public static void main(String[] args) {
 		// get handler
-		DataHandler handler = DataHandler.getInstance();
+		IDataHandler handler = DataHandler.getInstance();
 
 		
 		 int userID1 = handler.createUser("Daniel", "daniel.witsch@gmx.at", "Daniel", "admin").getId(); 

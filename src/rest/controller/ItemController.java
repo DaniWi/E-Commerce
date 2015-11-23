@@ -3,25 +3,43 @@ package rest.controller;
 import java.util.Collection;
 
 import data.DataHandler;
+import data.IDataHandler;
 import data.Item;
 import data.User;
 
 public class ItemController {
 
-	public static Item getItem(int itemIndex) {
-		return DataHandler.getInstance().getItemByID(itemIndex);
+	IDataHandler databaseHandler;
+	HtmlUtility htmlUtility = new HtmlUtility();
+
+	public IDataHandler getDatabaseHandler() {
+		return databaseHandler;
 	}
 
-	public static String getItemAsHtml(int itemIndex) {
-
-		Item item = DataHandler.getInstance().getItemByID(itemIndex);
-
-		return HtmlUtility.HtmlWrap(HtmlUtility.itemToHtml(item));
+	public void setDatabaseHandler(IDataHandler databaseHandler) {
+		this.databaseHandler = databaseHandler;
+		this.htmlUtility.setDatabaseHandler(databaseHandler);
 	}
 
-	public static String changeItem(int itemIndex, String title, String description, String username, String password) {
+	public void setDatabaseHandler() {
+		this.databaseHandler = DataHandler.getInstance();
+		this.htmlUtility.setDatabaseHandler(databaseHandler);
+	}
 
-		DataHandler dh = DataHandler.getInstance();
+	public Item getItem(int itemIndex) {
+		return databaseHandler.getItemByID(itemIndex);
+	}
+
+	public String getItemAsHtml(int itemIndex) {
+
+		Item item = databaseHandler.getItemByID(itemIndex);
+
+		return htmlUtility.HtmlWrap(htmlUtility.itemToHtml(item));
+	}
+
+	public String changeItem(int itemIndex, String title, String description, String username, String password) {
+
+		IDataHandler dh = databaseHandler;
 
 		if (dh.getUserLogin(username, password).getRights().equals("admin")) {
 			Item item = dh.getItemByID(itemIndex);
@@ -30,56 +48,56 @@ public class ItemController {
 
 			dh.changeItem(itemIndex, title, description, item.getAuthorID(), item.getCategoryID());
 
-			return HtmlUtility.HtmlWrap(HtmlUtility.itemToHtml(dh.getItemByID(itemIndex)));
+			return htmlUtility.HtmlWrap(htmlUtility.itemToHtml(dh.getItemByID(itemIndex)));
 		}
 
-		return HtmlUtility.HtmlWrap("No permission to change items!");
+		return htmlUtility.HtmlWrap("No permission to change items!");
 	}
 
-	public static String deleteItem(int itemIndex, String username, String password) {
-		DataHandler dh = DataHandler.getInstance();
+	public String deleteItem(int itemIndex, String username, String password) {
+		IDataHandler dh = databaseHandler;
 
 		if (dh.getUserLogin(username, password).getRights().equals("admin")) {
 			dh.deleteItem(itemIndex);
 
-			return HtmlUtility.HtmlWrap("Successfully deleted the item!");
+			return htmlUtility.HtmlWrap("Successfully deleted the item!");
 		}
 
-		return HtmlUtility.HtmlWrap("No permission to delete items!");
+		return htmlUtility.HtmlWrap("No permission to delete items!");
 	}
 
-	public static String newItem(String title, String description, String category, String username, String password) {
-		DataHandler dh = DataHandler.getInstance();
+	public String newItem(String title, String description, String category, String username, String password) {
+		IDataHandler dh = databaseHandler;
 		User user = dh.getUserLogin(username, password);
 
 		if (user.getRights().equals("admin")) {
 			if (title == null || title.equals("")) {
-				return HtmlUtility.HtmlWrap("New Items have to have a title!");
+				return htmlUtility.HtmlWrap("New Items have to have a title!");
 			}
 			description = (description == null) ? "empty description" : description;
 
 			int id = dh.createItem(title, description, user.getId(), dh.getCategoryByName(category).getId()).getId();
 
-			return HtmlUtility.HtmlWrap(HtmlUtility.itemToHtml(dh.getItemByID(id)));
+			return htmlUtility.HtmlWrap(htmlUtility.itemToHtml(dh.getItemByID(id)));
 		}
 
-		return HtmlUtility.HtmlWrap("No permission to create new items!");
+		return htmlUtility.HtmlWrap("No permission to create new items!");
 	}
 
-	public static Collection<Item> getAllItemsOfCategory(String category) {
-		DataHandler dh = DataHandler.getInstance();
+	public Collection<Item> getAllItemsOfCategory(String category) {
+		IDataHandler dh = databaseHandler;
 		return dh.getAllItemsFromCategory(dh.getCategoryByName(category).getId());
 	}
 
-	public static String getAllItemsOfCategoryAsHtml(String category) {
+	public String getAllItemsOfCategoryAsHtml(String category) {
 		String html = "";
 
-		DataHandler dh = DataHandler.getInstance();
+		IDataHandler dh = databaseHandler;
 		Collection<Item> items = dh.getAllItemsFromCategory(dh.getCategoryByName(category).getId());
 		for (Item item : items) {
-			html += HtmlUtility.itemToHtml(item);
+			html += htmlUtility.itemToHtml(item);
 		}
 
-		return HtmlUtility.HtmlWrap(html);
+		return htmlUtility.HtmlWrap(html);
 	}
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="All Tests" parallel="false">
+  <test name="Rest Integration Tests">
+    <classes>
+      <class name="rest_integration.GET"/>
+      <class name="rest_integration.PUT"/>
+      <class name="rest_integration.POST"/>
+    </classes>
+  </test> <!-- Test -->
+   <test name="Rest Unit Tests">
+    <classes>
+      <class name="rest_unit.CategoryControllerTest"/>
+      <class name="rest_unit.ItemControllerTest"/>
+      <class name="rest_unit.CommentControllerTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

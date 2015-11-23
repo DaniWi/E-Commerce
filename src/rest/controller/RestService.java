@@ -18,6 +18,15 @@ import data.Item;
 
 @Path("/{category}")
 public class RestService {
+	private CategoryController categoryController = new CategoryController();
+	private ItemController itemController = new ItemController();
+	private CommentController commentController = new CommentController();
+
+	public RestService() {
+		categoryController.setDatabaseHandler();
+		itemController.setDatabaseHandler();
+		commentController.setDatabaseHandler();
+	}
 
 	// ~~~~~~~~~~ CATEGORY Controller ~~~~~~~~~~ //
 
@@ -28,7 +37,7 @@ public class RestService {
 	public String postNewCategory(@PathParam("category") String category, @FormParam("username") String username,
 			@FormParam("password") String password) {
 
-		return CategoryController.newCategory(category, username, password);
+		return categoryController.newCategory(category, username, password);
 
 	}
 
@@ -39,7 +48,7 @@ public class RestService {
 	public String changeCategory(@PathParam("category") String category, @FormParam("username") String username,
 			@FormParam("password") String password, @FormParam("name") String name) {
 
-		return CategoryController.changeCategory(category, name, username, password);
+		return categoryController.changeCategory(category, name, username, password);
 	}
 
 	// ~~~~~~~~~~ ITEM Controller ~~~~~~~~~~ //
@@ -49,7 +58,7 @@ public class RestService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Item> getAllItemsByCategoryAsJson(@PathParam("category") String category) {
 
-		return ItemController.getAllItemsOfCategory(category);
+		return itemController.getAllItemsOfCategory(category);
 
 	}
 
@@ -57,7 +66,7 @@ public class RestService {
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getAllItemsByCategoryAsHtml(@PathParam("category") String category) {
-		return ItemController.getAllItemsOfCategoryAsHtml(category);
+		return itemController.getAllItemsOfCategoryAsHtml(category);
 	}
 
 	// Get Item by ID (JSON)
@@ -65,7 +74,7 @@ public class RestService {
 	@Path("/{item_index}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Item getItemByIdAsJson(@PathParam("item_index") Integer itemIndex) {
-		return ItemController.getItem(itemIndex);
+		return itemController.getItem(itemIndex);
 	}
 
 	// Get Item by ID (HTML)
@@ -75,7 +84,7 @@ public class RestService {
 	public String getItemByIdAsHtml(@PathParam("category") String category,
 			@PathParam("item_index") Integer itemIndex) {
 
-		return ItemController.getItemAsHtml(itemIndex);
+		return itemController.getItemAsHtml(itemIndex);
 	}
 
 	// Change Item
@@ -87,7 +96,7 @@ public class RestService {
 			@FormParam("password") String password, @FormParam("title") String title,
 			@FormParam("description") String description) {
 
-		return ItemController.changeItem(itemIndex, title, description, username, password);
+		return itemController.changeItem(itemIndex, title, description, username, password);
 	}
 
 	// DELETE Item
@@ -97,7 +106,7 @@ public class RestService {
 	public String deleteItem(@PathParam("item_index") Integer itemIndex, @FormParam("username") String username,
 			@FormParam("password") String password) {
 
-		return ItemController.deleteItem(itemIndex, username, password);
+		return itemController.deleteItem(itemIndex, username, password);
 	}
 
 	// New Item
@@ -109,7 +118,7 @@ public class RestService {
 			@FormParam("password") String password, @FormParam("title") String title,
 			@FormParam("description") String description) {
 
-		return ItemController.newItem(title, description, category, username, password);
+		return itemController.newItem(title, description, category, username, password);
 	}
 
 	// ~~~~~~~~~~ COMMENT Controller ~~~~~~~~~~ //
@@ -119,7 +128,7 @@ public class RestService {
 	@Path("/{item_index}/comment")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Comment> getAllCommentsByItemAsJson(@PathParam("item_index") Integer itemIndex) {
-		return CommentController.getAllCommentsOfItem(itemIndex);
+		return commentController.getAllCommentsOfItem(itemIndex);
 	}
 
 	// GET all comments of an item (HTML)
@@ -127,7 +136,7 @@ public class RestService {
 	@Path("/{item_index}/comment")
 	@Produces(MediaType.TEXT_HTML)
 	public String getAllCommentsByItemAsHml(@PathParam("item_index") Integer itemIndex) {
-		return CommentController.getAllCommentsOfItemAsHtml(itemIndex);
+		return commentController.getAllCommentsOfItemAsHtml(itemIndex);
 	}
 
 	// New Comment
@@ -138,7 +147,7 @@ public class RestService {
 	public String postNewComment(@PathParam("item_index") Integer itemIndex, @FormParam("username") String username,
 			@FormParam("password") String password, @FormParam("text") String text) {
 
-		return CommentController.newComment(text, itemIndex, username, password);
+		return commentController.newComment(text, itemIndex, username, password);
 	}
 
 	// GET comment by ID (JSON)
@@ -146,7 +155,7 @@ public class RestService {
 	@Path("/{item_index}/comment/{comment_index}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Comment getCommentByIdAsJson(@PathParam("comment_index") Integer commentIndex) {
-		return CommentController.getComment(commentIndex);
+		return commentController.getComment(commentIndex);
 	}
 
 	// GET comment by ID (HTML)
@@ -154,7 +163,7 @@ public class RestService {
 	@Path("/{item_index}/comment/{comment_index}")
 	@Produces(MediaType.TEXT_HTML)
 	public String getCommentByIdAsHtml(@PathParam("comment_index") Integer commentIndex) {
-		return CommentController.getCommentAsHtml(commentIndex);
+		return commentController.getCommentAsHtml(commentIndex);
 	}
 
 	// Change Comment
@@ -166,7 +175,7 @@ public class RestService {
 			@PathParam("comment_index") Integer commentIndex, @FormParam("username") String username,
 			@FormParam("password") String password, @FormParam("text") String text) {
 
-		return CommentController.changeComment(commentIndex, itemIndex, text, username, password);
+		return commentController.changeComment(commentIndex, itemIndex, text, username, password);
 	}
 
 	// DELETE Comment
@@ -176,7 +185,7 @@ public class RestService {
 	public String deleteCommentbyId(@PathParam("comment_index") Integer commentIndex,
 			@FormParam("username") String username, @FormParam("password") String password) {
 
-		return CommentController.deleteComment(commentIndex, username, password);
+		return commentController.deleteComment(commentIndex, username, password);
 	}
 
 }

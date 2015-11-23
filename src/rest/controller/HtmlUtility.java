@@ -4,21 +4,36 @@ import java.util.Collection;
 
 import data.Comment;
 import data.DataHandler;
+import data.IDataHandler;
 import data.Item;
 
 public class HtmlUtility {
 
-	public static String HtmlWrap(String content) {
+	IDataHandler databaseHandler;
+
+	public IDataHandler getDatabaseHandler() {
+		return databaseHandler;
+	}
+
+	public void setDatabaseHandler(IDataHandler databaseHandler) {
+		this.databaseHandler = databaseHandler;
+	}
+
+	public void setDatabaseHandler() {
+		this.databaseHandler = DataHandler.getInstance();
+	}
+
+	public String HtmlWrap(String content) {
 		return "<html><head><title>Webshop 4</title></head><body>" + content + "</body></html>";
 	}
 
 	/*
 	 * Returns an item as HTML
 	 */
-	public static String itemToHtml(Item item) {
+	public String itemToHtml(Item item) {
 		String str_item = "";
 
-		DataHandler dh = DataHandler.getInstance();
+		IDataHandler dh = databaseHandler;
 
 		str_item += "<div class=\"row item\"><div class=\"col-md-8\">";
 		str_item += "<h1>" + item.getTitle() + "</h1>";
@@ -37,10 +52,10 @@ public class HtmlUtility {
 	/*
 	 * Returns a comment as HTML
 	 */
-	public static String commentToHtml(Comment comment) {
+	public String commentToHtml(Comment comment) {
 		String str_comment = "";
 
-		DataHandler dh = DataHandler.getInstance();
+		IDataHandler dh = databaseHandler;
 
 		str_comment += "<div class=\"comment\"><p>" + comment.getText() + "</p>";
 		str_comment += "<p class=\"commentinfo\">" + dh.getUserByID(comment.getAuthorID()).getName() + " - "

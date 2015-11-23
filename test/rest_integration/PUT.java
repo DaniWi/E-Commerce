@@ -1,4 +1,4 @@
-package rest;
+package rest_integration;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
