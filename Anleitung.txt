@@ -27,17 +27,17 @@ GET rest/{category}/{item_index}/comment/{comment_index}	Kommentar mit CommentID
 
 alle GET liefern entweder HTML oder JSON retour, muss nur der accept-Eintrag im Header gesetzt werden
 
-POST rest/{category}						ändert Kategory mit Name in URI zu neuen Name im Parameter
+PUT rest/{category}						ändert Kategory mit Name in URI zu neuen Name im Parameter
 Parameter: name
-POST rest/{category}/{item_index}				ändert einen Eintrag mit ID=item_index
+PUT rest/{category}/{item_index}				ändert einen Eintrag mit ID=item_index
 Parameter: title, description
-POST rest/{category}/{item_index}/comment/{comment_index}	ändert ein Kommentar mit ID=comment_index
+PUT rest/{category}/{item_index}/comment/{comment_index}	ändert ein Kommentar mit ID=comment_index
 Parameter: text
 
-PUT rest/{category}						Legt neue Kategorie an mit Name in URI
-PUT rest/{category}/item							Legt neues Item an
+POST rest/{category}						legt neue Kategorie an mit Name in URI
+POST rest/{category}/item							Legt neues Item an
 Parameter: title, description
-PUT rest/{category}/{item_index}/comment			legt neues Kommentar an
+POST rest/{category}/{item_index}/comment			legt neues Kommentar an
 Parameter: text
 
 DELETE rest/{category}/{item_index}				löscht Item mit ID=item_index
