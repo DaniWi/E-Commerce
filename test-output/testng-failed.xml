@@ -3,12 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="rest_unit.ItemControllerTest">
+      <class name="selenium.UserBrowserTest">
         <methods>
-          <include name="beforeClass"/>
-          <include name="newItemNoDescription"/>
+          <include name="authenticationTest"/>
+          <include name="startBrowser"/>
+          <include name="userRightsTest"/>
+          <include name="newCommentTest"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- rest_unit.ItemControllerTest -->
+      </class> <!-- selenium.UserBrowserTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

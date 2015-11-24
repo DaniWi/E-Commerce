@@ -23,7 +23,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -36,8 +36,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" class="navigator-link" panel-name="suite-All_Tests">
-              <span class="suite-name border-passed">All Tests</span>
+            <a href="#" class="navigator-link" panel-name="suite-Default_suite">
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -47,37 +47,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="test-xml-All_Tests">
-                    <span>C:\Users\Dani\Documents\GitHub\E-Commerce\test\allTests.xml</span>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
+                    <span>C:\Users\Nocker\AppData\Local\Temp\testng-eclipse-159146268\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="testlist-All_Tests">
-                    <span class="test-stats">2 tests</span>
+                  <a href="#" class="navigator-link " panel-name="testlist-Default_suite">
+                    <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="group-All_Tests">
+                  <a href="#" class="navigator-link " panel-name="group-Default_suite">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="times-All_Tests">
+                  <a href="#" class="navigator-link " panel-name="times-Default_suite">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="reporter-All_Tests">
+                  <a href="#" class="navigator-link " panel-name="reporter-Default_suite">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="ignored-methods-All_Tests">
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Default_suite">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="chronological-All_Tests">
+                  <a href="#" class="navigator-link " panel-name="chronological-Default_suite">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -90,236 +90,40 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">44 methods,   44 passed</span>
+                    <span class="method-stats">3 methods, 1 failed,   2 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Default_suite">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="selenium.UserBrowserTest" hash-for-method="newCommentTest">newCommentTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
                     <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-All_Tests" class="hide-methods passed suite-All_Tests"> (hide)</a> <!-- hide-methods passed suite-All_Tests -->
-                      <a href="#" panel-name="suite-All_Tests" class="show-methods passed suite-All_Tests"> (show)</a> <!-- show-methods passed suite-All_Tests -->
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
-                    <div class="method-list-content passed suite-All_Tests">
+                    <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.GET" hash-for-method="allCommentsHTML">allCommentsHTML</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="selenium.UserBrowserTest" hash-for-method="authenticationTest">authenticationTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.GET" hash-for-method="allCommentsJSON">allCommentsJSON</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="selenium.UserBrowserTest" hash-for-method="userRightsTest">userRightsTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.GET" hash-for-method="categoryHTML">categoryHTML</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.GET" hash-for-method="categoryJSON">categoryJSON</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.PUT" hash-for-method="changeCategory">changeCategory</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CategoryControllerTest" hash-for-method="changeCategory">changeCategory</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CategoryControllerTest" hash-for-method="changeCategoryNoPermission">changeCategoryNoPermission</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CategoryControllerTest" hash-for-method="changeCategoryWrongCategory">changeCategoryWrongCategory</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CategoryControllerTest" hash-for-method="changeCategoryWrongUser">changeCategoryWrongUser</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.PUT" hash-for-method="changeComment">changeComment</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="changeComment">changeComment</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="changeCommentNoPermission">changeCommentNoPermission</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="changeCommentNotInTheDatabase">changeCommentNotInTheDatabase</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="changeCommentOwnComment">changeCommentOwnComment</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.PUT" hash-for-method="changeItem">changeItem</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="changeItem">changeItem</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="changeItemNoPermission">changeItemNoPermission</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="changeItemNotInTheDatabase">changeItemNotInTheDatabase</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="changeItemWithoutTitleDescription">changeItemWithoutTitleDescription</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.GET" hash-for-method="commentHTML">commentHTML</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.GET" hash-for-method="commentJSON">commentJSON</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CategoryControllerTest" hash-for-method="createCategory">createCategory</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CategoryControllerTest" hash-for-method="createCategoryNoPermission">createCategoryNoPermission</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CategoryControllerTest" hash-for-method="createCategoryWrongUser">createCategoryWrongUser</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="deleteComment">deleteComment</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="deleteCommentNoPermission">deleteCommentNoPermission</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="deleteCommentNotInTheDatabase">deleteCommentNotInTheDatabase</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="deleteItem">deleteItem</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="deleteItemNoPermission">deleteItemNoPermission</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="deleteItemNotInTheDatabase">deleteItemNotInTheDatabase</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.GET" hash-for-method="itemHTML">itemHTML</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.GET" hash-for-method="itemJSON">itemJSON</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.POST" hash-for-method="newCategory">newCategory</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.POST" hash-for-method="newComment">newComment</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="newComment">newComment</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="newCommentNoPermission">newCommentNoPermission</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="newCommentNoText">newCommentNoText</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.CommentControllerTest" hash-for-method="newCommentNotInTheDatabase">newCommentNotInTheDatabase</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_integration.POST" hash-for-method="newItem">newItem</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="newItem">newItem</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="newItemItemNoPermission">newItemItemNoPermission</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="newItemItemWithoutTitle">newItemItemWithoutTitle</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="newItemNoDescription">newItemNoDescription</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-All_Tests" title="rest_unit.ItemControllerTest" hash-for-method="newItemNotInTheDatabase">newItemNotInTheDatabase</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content passed suite-All_Tests -->
+                    </div> <!-- method-list-content passed suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -330,850 +134,211 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-All_Tests" class="panel All_Tests">
-          <div class="suite-All_Tests-class-passed">
+        <div panel-name="suite-Default_suite" class="panel Default_suite">
+          <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">rest_integration.GET</span>
+              <img src="failed.png"/>
+              <span class="class-name">selenium.UserBrowserTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="allCommentsHTML">
-                  </a> <!-- allCommentsHTML -->
-                  <span class="method-name">allCommentsHTML</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="allCommentsJSON">
-                  </a> <!-- allCommentsJSON -->
-                  <span class="method-name">allCommentsJSON</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="categoryHTML">
-                  </a> <!-- categoryHTML -->
-                  <span class="method-name">categoryHTML</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="categoryJSON">
-                  </a> <!-- categoryJSON -->
-                  <span class="method-name">categoryJSON</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="commentHTML">
-                  </a> <!-- commentHTML -->
-                  <span class="method-name">commentHTML</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="commentJSON">
-                  </a> <!-- commentJSON -->
-                  <span class="method-name">commentJSON</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="itemHTML">
-                  </a> <!-- itemHTML -->
-                  <span class="method-name">itemHTML</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="itemJSON">
-                  </a> <!-- itemJSON -->
-                  <span class="method-name">itemJSON</span>
+                  <a name="newCommentTest">
+                  </a> <!-- newCommentTest -->
+                  <span class="method-name">newCommentTest</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+	at org.testng.AssertJUnit.fail(AssertJUnit.java:59)
+	at org.testng.AssertJUnit.failNotEquals(AssertJUnit.java:364)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:80)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:245)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:252)
+	at selenium.UserBrowserTest.newCommentTest(UserBrowserTest.java:115)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-All_Tests-class-passed -->
-          <div class="suite-All_Tests-class-passed">
+          </div> <!-- suite-Default_suite-class-failed -->
+          <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">rest_integration.POST</span>
+              <span class="class-name">selenium.UserBrowserTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="newCategory">
-                  </a> <!-- newCategory -->
-                  <span class="method-name">newCategory</span>
+                  <a name="authenticationTest">
+                  </a> <!-- authenticationTest -->
+                  <span class="method-name">authenticationTest</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="newComment">
-                  </a> <!-- newComment -->
-                  <span class="method-name">newComment</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newItem">
-                  </a> <!-- newItem -->
-                  <span class="method-name">newItem</span>
+                  <a name="userRightsTest">
+                  </a> <!-- userRightsTest -->
+                  <span class="method-name">userRightsTest</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-All_Tests-class-passed -->
-          <div class="suite-All_Tests-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">rest_unit.CommentControllerTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeComment">
-                  </a> <!-- changeComment -->
-                  <span class="method-name">changeComment</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeCommentNoPermission">
-                  </a> <!-- changeCommentNoPermission -->
-                  <span class="method-name">changeCommentNoPermission</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeCommentNotInTheDatabase">
-                  </a> <!-- changeCommentNotInTheDatabase -->
-                  <span class="method-name">changeCommentNotInTheDatabase</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeCommentOwnComment">
-                  </a> <!-- changeCommentOwnComment -->
-                  <span class="method-name">changeCommentOwnComment</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="deleteComment">
-                  </a> <!-- deleteComment -->
-                  <span class="method-name">deleteComment</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="deleteCommentNoPermission">
-                  </a> <!-- deleteCommentNoPermission -->
-                  <span class="method-name">deleteCommentNoPermission</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="deleteCommentNotInTheDatabase">
-                  </a> <!-- deleteCommentNotInTheDatabase -->
-                  <span class="method-name">deleteCommentNotInTheDatabase</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newComment">
-                  </a> <!-- newComment -->
-                  <span class="method-name">newComment</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newCommentNoPermission">
-                  </a> <!-- newCommentNoPermission -->
-                  <span class="method-name">newCommentNoPermission</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newCommentNoText">
-                  </a> <!-- newCommentNoText -->
-                  <span class="method-name">newCommentNoText</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newCommentNotInTheDatabase">
-                  </a> <!-- newCommentNotInTheDatabase -->
-                  <span class="method-name">newCommentNotInTheDatabase</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-All_Tests-class-passed -->
-          <div class="suite-All_Tests-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">rest_integration.PUT</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeCategory">
-                  </a> <!-- changeCategory -->
-                  <span class="method-name">changeCategory</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeComment">
-                  </a> <!-- changeComment -->
-                  <span class="method-name">changeComment</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeItem">
-                  </a> <!-- changeItem -->
-                  <span class="method-name">changeItem</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-All_Tests-class-passed -->
-          <div class="suite-All_Tests-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">rest_unit.ItemControllerTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeItem">
-                  </a> <!-- changeItem -->
-                  <span class="method-name">changeItem</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeItemNoPermission">
-                  </a> <!-- changeItemNoPermission -->
-                  <span class="method-name">changeItemNoPermission</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeItemNotInTheDatabase">
-                  </a> <!-- changeItemNotInTheDatabase -->
-                  <span class="method-name">changeItemNotInTheDatabase</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeItemWithoutTitleDescription">
-                  </a> <!-- changeItemWithoutTitleDescription -->
-                  <span class="method-name">changeItemWithoutTitleDescription</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="deleteItem">
-                  </a> <!-- deleteItem -->
-                  <span class="method-name">deleteItem</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="deleteItemNoPermission">
-                  </a> <!-- deleteItemNoPermission -->
-                  <span class="method-name">deleteItemNoPermission</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="deleteItemNotInTheDatabase">
-                  </a> <!-- deleteItemNotInTheDatabase -->
-                  <span class="method-name">deleteItemNotInTheDatabase</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newItem">
-                  </a> <!-- newItem -->
-                  <span class="method-name">newItem</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newItemItemNoPermission">
-                  </a> <!-- newItemItemNoPermission -->
-                  <span class="method-name">newItemItemNoPermission</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newItemItemWithoutTitle">
-                  </a> <!-- newItemItemWithoutTitle -->
-                  <span class="method-name">newItemItemWithoutTitle</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newItemNoDescription">
-                  </a> <!-- newItemNoDescription -->
-                  <span class="method-name">newItemNoDescription</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="newItemNotInTheDatabase">
-                  </a> <!-- newItemNotInTheDatabase -->
-                  <span class="method-name">newItemNotInTheDatabase</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-All_Tests-class-passed -->
-          <div class="suite-All_Tests-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">rest_unit.CategoryControllerTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeCategory">
-                  </a> <!-- changeCategory -->
-                  <span class="method-name">changeCategory</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeCategoryNoPermission">
-                  </a> <!-- changeCategoryNoPermission -->
-                  <span class="method-name">changeCategoryNoPermission</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeCategoryWrongCategory">
-                  </a> <!-- changeCategoryWrongCategory -->
-                  <span class="method-name">changeCategoryWrongCategory</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="changeCategoryWrongUser">
-                  </a> <!-- changeCategoryWrongUser -->
-                  <span class="method-name">changeCategoryWrongUser</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="createCategory">
-                  </a> <!-- createCategory -->
-                  <span class="method-name">createCategory</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="createCategoryNoPermission">
-                  </a> <!-- createCategoryNoPermission -->
-                  <span class="method-name">createCategoryNoPermission</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="createCategoryWrongUser">
-                  </a> <!-- createCategoryWrongUser -->
-                  <span class="method-name">createCategoryWrongUser</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-All_Tests-class-passed -->
-        </div> <!-- panel All_Tests -->
-        <div panel-name="test-xml-All_Tests" class="panel">
+          </div> <!-- suite-Default_suite-class-passed -->
+        </div> <!-- panel Default_suite -->
+        <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Dani\Documents\GitHub\E-Commerce\test\allTests.xml</span>
+            <span class="header-content">C:\Users\Nocker\AppData\Local\Temp\testng-eclipse-159146268\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite name=&quot;All Tests&quot;&gt;
-  &lt;test name=&quot;Rest Integration Tests&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
+  &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;rest_integration.GET&quot;/&gt;
-      &lt;class name=&quot;rest_integration.PUT&quot;/&gt;
-      &lt;class name=&quot;rest_integration.POST&quot;/&gt;
+      &lt;class name=&quot;selenium.UserBrowserTest&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Rest Integration Tests --&gt;
-  &lt;test name=&quot;Rest Unit Tests&quot;&gt;
-    &lt;classes&gt;
-      &lt;class name=&quot;rest_unit.CategoryControllerTest&quot;/&gt;
-      &lt;class name=&quot;rest_unit.ItemControllerTest&quot;/&gt;
-      &lt;class name=&quot;rest_unit.CommentControllerTest&quot;/&gt;
-    &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Rest Unit Tests --&gt;
-&lt;/suite&gt; &lt;!-- All Tests --&gt;
+  &lt;/test&gt; &lt;!-- Default test --&gt;
+&lt;/suite&gt; &lt;!-- Default suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-All_Tests" class="panel">
+        <div panel-name="testlist-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for All Tests</span>
+            <span class="header-content">Tests for Default suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Rest Integration Tests (3 classes)</span>
-              </li>
-              <li>
-                <span class="test-name">Rest Unit Tests (3 classes)</span>
+                <span class="test-name">Default test (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-All_Tests" class="panel">
+        <div panel-name="group-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for All Tests</span>
+            <span class="header-content">Groups for Default suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-All_Tests" class="panel">
+        <div panel-name="times-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for All Tests</span>
+            <span class="header-content">Times for Default suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_All_Tests');
-function tableData_All_Tests() {
+suiteTableInitFunctions.push('tableData_Default_suite');
+function tableData_Default_suite() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(44);
+data.addRows(3);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'allCommentsJSON')
-data.setCell(0, 2, 'rest_integration.GET')
-data.setCell(0, 3, 6636);
+data.setCell(0, 1, 'newCommentTest')
+data.setCell(0, 2, 'selenium.UserBrowserTest')
+data.setCell(0, 3, 33432);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'changeCategory')
-data.setCell(1, 2, 'rest_integration.PUT')
-data.setCell(1, 3, 663);
+data.setCell(1, 1, 'userRightsTest')
+data.setCell(1, 2, 'selenium.UserBrowserTest')
+data.setCell(1, 3, 23001);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'changeComment')
-data.setCell(2, 2, 'rest_integration.PUT')
-data.setCell(2, 3, 347);
-data.setCell(3, 0, 3)
-data.setCell(3, 1, 'newCategory')
-data.setCell(3, 2, 'rest_integration.POST')
-data.setCell(3, 3, 230);
-data.setCell(4, 0, 4)
-data.setCell(4, 1, 'newItem')
-data.setCell(4, 2, 'rest_integration.POST')
-data.setCell(4, 3, 165);
-data.setCell(5, 0, 5)
-data.setCell(5, 1, 'changeItem')
-data.setCell(5, 2, 'rest_integration.PUT')
-data.setCell(5, 3, 164);
-data.setCell(6, 0, 6)
-data.setCell(6, 1, 'newComment')
-data.setCell(6, 2, 'rest_integration.POST')
-data.setCell(6, 3, 150);
-data.setCell(7, 0, 7)
-data.setCell(7, 1, 'categoryHTML')
-data.setCell(7, 2, 'rest_integration.GET')
-data.setCell(7, 3, 69);
-data.setCell(8, 0, 8)
-data.setCell(8, 1, 'itemHTML')
-data.setCell(8, 2, 'rest_integration.GET')
-data.setCell(8, 3, 31);
-data.setCell(9, 0, 9)
-data.setCell(9, 1, 'categoryJSON')
-data.setCell(9, 2, 'rest_integration.GET')
-data.setCell(9, 3, 19);
-data.setCell(10, 0, 10)
-data.setCell(10, 1, 'allCommentsHTML')
-data.setCell(10, 2, 'rest_integration.GET')
-data.setCell(10, 3, 18);
-data.setCell(11, 0, 11)
-data.setCell(11, 1, 'commentHTML')
-data.setCell(11, 2, 'rest_integration.GET')
-data.setCell(11, 3, 13);
-data.setCell(12, 0, 12)
-data.setCell(12, 1, 'commentJSON')
-data.setCell(12, 2, 'rest_integration.GET')
-data.setCell(12, 3, 13);
-data.setCell(13, 0, 13)
-data.setCell(13, 1, 'itemJSON')
-data.setCell(13, 2, 'rest_integration.GET')
-data.setCell(13, 3, 11);
-data.setCell(14, 0, 14)
-data.setCell(14, 1, 'changeCategory')
-data.setCell(14, 2, 'rest_unit.CategoryControllerTest')
-data.setCell(14, 3, 6);
-data.setCell(15, 0, 15)
-data.setCell(15, 1, 'changeItemNoPermission')
-data.setCell(15, 2, 'rest_unit.ItemControllerTest')
-data.setCell(15, 3, 5);
-data.setCell(16, 0, 16)
-data.setCell(16, 1, 'changeItem')
-data.setCell(16, 2, 'rest_unit.ItemControllerTest')
-data.setCell(16, 3, 5);
-data.setCell(17, 0, 17)
-data.setCell(17, 1, 'createCategory')
-data.setCell(17, 2, 'rest_unit.CategoryControllerTest')
-data.setCell(17, 3, 5);
-data.setCell(18, 0, 18)
-data.setCell(18, 1, 'changeCategoryWrongCategory')
-data.setCell(18, 2, 'rest_unit.CategoryControllerTest')
-data.setCell(18, 3, 2);
-data.setCell(19, 0, 19)
-data.setCell(19, 1, 'changeCategoryWrongUser')
-data.setCell(19, 2, 'rest_unit.CategoryControllerTest')
-data.setCell(19, 3, 2);
-data.setCell(20, 0, 20)
-data.setCell(20, 1, 'createCategoryNoPermission')
-data.setCell(20, 2, 'rest_unit.CategoryControllerTest')
-data.setCell(20, 3, 2);
-data.setCell(21, 0, 21)
-data.setCell(21, 1, 'changeItemWithoutTitleDescription')
-data.setCell(21, 2, 'rest_unit.ItemControllerTest')
-data.setCell(21, 3, 2);
-data.setCell(22, 0, 22)
-data.setCell(22, 1, 'deleteItem')
-data.setCell(22, 2, 'rest_unit.ItemControllerTest')
-data.setCell(22, 3, 2);
-data.setCell(23, 0, 23)
-data.setCell(23, 1, 'changeItemNotInTheDatabase')
-data.setCell(23, 2, 'rest_unit.ItemControllerTest')
-data.setCell(23, 3, 2);
-data.setCell(24, 0, 24)
-data.setCell(24, 1, 'newItem')
-data.setCell(24, 2, 'rest_unit.ItemControllerTest')
-data.setCell(24, 3, 1);
-data.setCell(25, 0, 25)
-data.setCell(25, 1, 'createCategoryWrongUser')
-data.setCell(25, 2, 'rest_unit.CategoryControllerTest')
-data.setCell(25, 3, 1);
-data.setCell(26, 0, 26)
-data.setCell(26, 1, 'changeComment')
-data.setCell(26, 2, 'rest_unit.CommentControllerTest')
-data.setCell(26, 3, 1);
-data.setCell(27, 0, 27)
-data.setCell(27, 1, 'changeCommentOwnComment')
-data.setCell(27, 2, 'rest_unit.CommentControllerTest')
-data.setCell(27, 3, 1);
-data.setCell(28, 0, 28)
-data.setCell(28, 1, 'deleteComment')
-data.setCell(28, 2, 'rest_unit.CommentControllerTest')
-data.setCell(28, 3, 1);
-data.setCell(29, 0, 29)
-data.setCell(29, 1, 'newComment')
-data.setCell(29, 2, 'rest_unit.CommentControllerTest')
-data.setCell(29, 3, 1);
-data.setCell(30, 0, 30)
-data.setCell(30, 1, 'deleteItemNoPermission')
-data.setCell(30, 2, 'rest_unit.ItemControllerTest')
-data.setCell(30, 3, 1);
-data.setCell(31, 0, 31)
-data.setCell(31, 1, 'deleteCommentNoPermission')
-data.setCell(31, 2, 'rest_unit.CommentControllerTest')
-data.setCell(31, 3, 1);
-data.setCell(32, 0, 32)
-data.setCell(32, 1, 'newItemNoDescription')
-data.setCell(32, 2, 'rest_unit.ItemControllerTest')
-data.setCell(32, 3, 1);
-data.setCell(33, 0, 33)
-data.setCell(33, 1, 'changeCategoryNoPermission')
-data.setCell(33, 2, 'rest_unit.CategoryControllerTest')
-data.setCell(33, 3, 1);
-data.setCell(34, 0, 34)
-data.setCell(34, 1, 'newItemItemNoPermission')
-data.setCell(34, 2, 'rest_unit.ItemControllerTest')
-data.setCell(34, 3, 1);
-data.setCell(35, 0, 35)
-data.setCell(35, 1, 'newCommentNoPermission')
-data.setCell(35, 2, 'rest_unit.CommentControllerTest')
-data.setCell(35, 3, 1);
-data.setCell(36, 0, 36)
-data.setCell(36, 1, 'newCommentNoText')
-data.setCell(36, 2, 'rest_unit.CommentControllerTest')
-data.setCell(36, 3, 1);
-data.setCell(37, 0, 37)
-data.setCell(37, 1, 'newItemItemWithoutTitle')
-data.setCell(37, 2, 'rest_unit.ItemControllerTest')
-data.setCell(37, 3, 1);
-data.setCell(38, 0, 38)
-data.setCell(38, 1, 'deleteCommentNotInTheDatabase')
-data.setCell(38, 2, 'rest_unit.CommentControllerTest')
-data.setCell(38, 3, 1);
-data.setCell(39, 0, 39)
-data.setCell(39, 1, 'newCommentNotInTheDatabase')
-data.setCell(39, 2, 'rest_unit.CommentControllerTest')
-data.setCell(39, 3, 1);
-data.setCell(40, 0, 40)
-data.setCell(40, 1, 'changeCommentNotInTheDatabase')
-data.setCell(40, 2, 'rest_unit.CommentControllerTest')
-data.setCell(40, 3, 0);
-data.setCell(41, 0, 41)
-data.setCell(41, 1, 'newItemNotInTheDatabase')
-data.setCell(41, 2, 'rest_unit.ItemControllerTest')
-data.setCell(41, 3, 0);
-data.setCell(42, 0, 42)
-data.setCell(42, 1, 'changeCommentNoPermission')
-data.setCell(42, 2, 'rest_unit.CommentControllerTest')
-data.setCell(42, 3, 0);
-data.setCell(43, 0, 43)
-data.setCell(43, 1, 'deleteItemNotInTheDatabase')
-data.setCell(43, 2, 'rest_unit.ItemControllerTest')
-data.setCell(43, 3, 0);
-window.suiteTableData['All_Tests']= { tableData: data, tableDiv: 'times-div-All_Tests'}
+data.setCell(2, 1, 'authenticationTest')
+data.setCell(2, 2, 'selenium.UserBrowserTest')
+data.setCell(2, 3, 2387);
+window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 8 seconds</span>
-              <div id="times-div-All_Tests">
-              </div> <!-- times-div-All_Tests -->
+              <span class="suite-total-time">Total running time: 58 seconds</span>
+              <div id="times-div-Default_suite">
+              </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-All_Tests" class="panel">
+        <div panel-name="reporter-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for All Tests</span>
+            <span class="header-content">Reporter output for Default suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-All_Tests" class="panel">
+        <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-All_Tests" class="panel">
+        <div panel-name="chronological-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">rest_integration.GET</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">beforeClass</span>
+              <div class="chronological-class-name">selenium.UserBrowserTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">startBrowser</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-class before -->
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">allCommentsJSON</span>
-                <span class="method-start">203 ms</span>
+                <span class="method-name">authenticationTest</span>
+                <span class="method-start">10045 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closeBrowser</span>
+                <span class="method-start">12433 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startBrowser</span>
+                <span class="method-start">12451 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">categoryHTML</span>
-                <span class="method-start">6846 ms</span>
+                <span class="method-name">userRightsTest</span>
+                <span class="method-start">22441 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closeBrowser</span>
+                <span class="method-start">45443 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">startBrowser</span>
+                <span class="method-start">45462 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">categoryJSON</span>
-                <span class="method-start">6916 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">newCommentTest</span>
+                <span class="method-start">54502 ms</span>
               </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">itemHTML</span>
-                <span class="method-start">6948 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">commentHTML</span>
-                <span class="method-start">6980 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">itemJSON</span>
-                <span class="method-start">6993 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">commentJSON</span>
-                <span class="method-start">7005 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">allCommentsHTML</span>
-                <span class="method-start">7018 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">rest_integration.PUT</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">beforeClass</span>
-                <span class="method-start">7039 ms</span>
-              </div> <!-- configuration-class before -->
-              <div class="test-method">
-                <span class="method-name">changeCategory</span>
-                <span class="method-start">7043 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeComment</span>
-                <span class="method-start">7707 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeItem</span>
-                <span class="method-start">8062 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">rest_integration.POST</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">beforeClass</span>
-                <span class="method-start">8227 ms</span>
-              </div> <!-- configuration-class before -->
-              <div class="test-method">
-                <span class="method-name">newCategory</span>
-                <span class="method-start">8229 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newComment</span>
-                <span class="method-start">8460 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newItem</span>
-                <span class="method-start">8611 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">rest_unit.CategoryControllerTest</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">beforeClass</span>
-                <span class="method-start">8809 ms</span>
-              </div> <!-- configuration-class before -->
-              <div class="test-method">
-                <span class="method-name">changeCategory</span>
-                <span class="method-start">9190 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeCategoryNoPermission</span>
-                <span class="method-start">9205 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeCategoryWrongCategory</span>
-                <span class="method-start">9213 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeCategoryWrongUser</span>
-                <span class="method-start">9220 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">createCategory</span>
-                <span class="method-start">9237 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">createCategoryNoPermission</span>
-                <span class="method-start">9245 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">createCategoryWrongUser</span>
-                <span class="method-start">9250 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">rest_unit.ItemControllerTest</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">beforeClass</span>
-                <span class="method-start">9256 ms</span>
-              </div> <!-- configuration-class before -->
-              <div class="test-method">
-                <span class="method-name">changeItem</span>
-                <span class="method-start">9266 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeItemNoPermission</span>
-                <span class="method-start">9276 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeItemNotInTheDatabase</span>
-                <span class="method-start">9284 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeItemWithoutTitleDescription</span>
-                <span class="method-start">9289 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">deleteItem</span>
-                <span class="method-start">9295 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">deleteItemNoPermission</span>
-                <span class="method-start">9297 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">deleteItemNotInTheDatabase</span>
-                <span class="method-start">9299 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newItem</span>
-                <span class="method-start">9300 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newItemItemNoPermission</span>
-                <span class="method-start">9302 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newItemItemWithoutTitle</span>
-                <span class="method-start">9303 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newItemNoDescription</span>
-                <span class="method-start">9304 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newItemNotInTheDatabase</span>
-                <span class="method-start">9306 ms</span>
-              </div> <!-- test-method -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">rest_unit.CommentControllerTest</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">beforeClass</span>
-                <span class="method-start">9308 ms</span>
-              </div> <!-- configuration-class before -->
-              <div class="test-method">
-                <span class="method-name">changeComment</span>
-                <span class="method-start">9310 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeCommentNoPermission</span>
-                <span class="method-start">9312 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeCommentNotInTheDatabase</span>
-                <span class="method-start">9313 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">changeCommentOwnComment</span>
-                <span class="method-start">9315 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">deleteComment</span>
-                <span class="method-start">9316 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">deleteCommentNoPermission</span>
-                <span class="method-start">9317 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">deleteCommentNotInTheDatabase</span>
-                <span class="method-start">9318 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newComment</span>
-                <span class="method-start">9320 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newCommentNoPermission</span>
-                <span class="method-start">9321 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newCommentNoText</span>
-                <span class="method-start">9322 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">newCommentNotInTheDatabase</span>
-                <span class="method-start">9323 ms</span>
-              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">closeBrowser</span>
+                <span class="method-start">87937 ms</span>
+              </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

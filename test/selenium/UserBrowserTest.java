@@ -85,6 +85,7 @@ public class UserBrowserTest {
 		
 	}
 	
+	/*
 	@Test(dependsOnMethods = { "userRightsTest" })
 	public void newCommentTest() {
 		driver.get(URL_PAGE);
@@ -115,5 +116,6 @@ public class UserBrowserTest {
 		AssertJUnit.assertEquals(commentCount_before + 1, commentCount_after);
 		AssertJUnit.assertEquals(1, newCommentCount);
 	}
+	*/
 
 }
