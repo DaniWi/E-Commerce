@@ -49,6 +49,7 @@
 	
 		<!-- Begin page content -->
 		<div class="container">
+		  <a type="button" class="btn btn-primary" href="showBasket.jsp">Shopping Basket</a>
 		  <%
 		  	String rights = (String) session.getAttribute("rights");
 		    if(rights == null) {

@@ -68,6 +68,7 @@
 		<!-- Begin page content -->
 		<div class="container">
 			<a type="button" class="btn btn-primary" href="index.jsp">Back Home</a>
+			<a type="button" class="btn btn-primary" href="showBasket.jsp">Shopping Basket</a>
 			<a type="button" class="btn btn-primary" href="category.jsp?categoryID=<%= categoryID %>">Back to <%= category.getName() %></a>
 			<%
 			  	String rights = (String) session.getAttribute("rights");
@@ -92,6 +93,7 @@
 					Creation-Date: <%= item.getCreationDate().toGMTString() %><br>
 					Altertion-Date: <%= item.getAltertionDate().toGMTString() %>
 				</p>
+				<p><button type="button" class="btn btn-primary" data-toggle="popover" title="Added to the shopping basket" onclick="return addToBasket(<%= item.getId()%>)">Into the shopping basket</button></p>
 				<div id="allComments">
 				<% Collection<Comment> comments = handler.getAllCommentsFromItem(item.getId()); %>
 						<% for(Comment comment : comments) { %>
@@ -185,6 +187,16 @@
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send('&comment='+comment+'&id='+commentID+'&authorID='+userID+'&itemID='+<%= itemID %>);
 			}
+			
+			function addToBasket(itemID) {
+				
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "addItemBasket.jsp", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send('&id='+itemID);
+			}
+			
+			$(function () { $("[data-toggle = 'popover']").popover(); });
 		</script>
 	</body>
 </html>

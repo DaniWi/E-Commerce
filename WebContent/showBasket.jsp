@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="java.io.*,java.util.*,data.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<% IDataHandler handler = DataHandler.getInstance(); 
-   int categoryID = Integer.parseInt(request.getParameter("categoryID"));
-   Category category = handler.getCategoryByID(categoryID);
-   Collection<Item> items = handler.getAllItemsFromCategory(categoryID);
-   %>
+<% 	IDataHandler handler = DataHandler.getInstance(); 
+	List<Item> basket = new LinkedList<>();
+	HashMap<Integer, Integer> basketSession = null;
+	if(session.getAttribute("basket") != null) {
+		basketSession = (HashMap)session.getAttribute("basket");
+		for(Integer i : basketSession.keySet()){
+			basket.add(handler.getItemByID(i));
+		}
+	}
+%>
 <html>
 	<head>
 		<title>Webshop 4</title>
@@ -61,43 +66,28 @@
 		<!-- Begin page content -->
 		<div class="container">
 			<a type="button" class="btn btn-primary" href="index.jsp">Back Home</a>
-			<a type="button" class="btn btn-primary" href="showBasket.jsp">Shopping Basket</a>
-			<%
-			  	String rights = (String) session.getAttribute("rights");
-			    if(rights == null) {
-			    	rights = "null";
-			    } else {
-			    	rights = rights.toString();
-			    }
-		  		if(rights.equals("admin")) {%>
-		  		<a type="button" class="btn btn-primary" href="newCategory.html">New Category</a>
-		  		<a type="button" class="btn btn-primary" href="changeCategory.jsp">Change Category</a>
-		  		<a type="button" class="btn btn-primary" href="newItem.jsp">New Item</a>
-		    <%}%>
 			<div class="page-header">
-				<h2><%= category.getName() %></h2>
+				<h2>Shopping Basket</h2>
 			</div>
-			<% for(Item item : items){ %>
-				<div class="row item">
+			<%
+				if(basket.size() == 0){
+			%>
+			No items in the shopping basket!	
+			<%  }
+				for(Item item : basket){ %>
+				<div class="row item" id="item<%= item.getId() %>">
 					<div class="col-md-8">
-						<h1><a href="item.jsp?id=<%= item.getId() %>&categoryID=<%= categoryID %>"><%= item.getTitle()%></a></h1>
-						<p>Von <%= handler.getUserByID(item.getAuthorID()).getName()%></p>
-						<p class="myinfo"><%= item.getCreationDate().toGMTString() %></p>
-						<p><button type="button" class="btn btn-primary" data-toggle="popover" title="Added to the shopping basket" onclick="return addToBasket(<%= item.getId()%>)">Into the shopping basket</button></p>
-						<% Collection<Comment> comments = handler.getAllCommentsFromItem(item.getId()); %>
-						<% 
-							int i = 0;
-							for(Comment comment : comments) { 
-								if(i == 2) {
-									break;
-								}
-								i++;
-						%>
-							<div class="comment">
-								<p><%= comment.getText() %></p>
-								<p class="commentinfo"><%= handler.getUserByID(comment.getAuthorID()).getName() %> - <%= comment.getCreationDate().toGMTString() %></p>
-							</div>
-						<% } %>
+						<h1><a href="item.jsp?id=<%= item.getId()%>&categoryID=<%= item.getCategoryID() %>"><%= item.getTitle()%></a></h1>
+						<form class="form-inline">
+							<p>
+								<label>Amount</label>
+	    						<input type="number" id="inputAmount<%= item.getId()%>" class="form-control" min="1" value="<%= basketSession.get(item.getId())%>">
+	    					</p>
+							<p>
+								<button type="button" class="btn btn-primary" onclick="return deleteItem(<%= item.getId()%>)">Delete</button>
+								<button type="button" class="btn btn-primary" data-toggle="popover" title="Saved" onclick="return saveBasket(<%= item.getId()%>)">Save</button>
+							</p>
+						</form>
 					</div>
 				</div>
 			<% } %>
@@ -114,12 +104,27 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-			function addToBasket(itemID) {
+			function deleteItem(itemID) {
 				
 				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", "addItemBasket.jsp", true);
+				xhttp.onreadystatechange = function() {
+					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						var element = "item" + parseInt(itemID);
+						document.getElementById(element).remove();
+					}
+				}
+				xhttp.open("POST", "deleteItemBasket.jsp", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send('&id='+itemID);
+			}
+			
+			function saveBasket(itemID) {
+				
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "saveBasket.jsp", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				var element = "inputAmount" + parseInt(itemID)
+				xhttp.send('&itemID='+itemID+'&amount='+document.getElementById(element).value);
 			}
 			
 			$(function () { $("[data-toggle = 'popover']").popover(); });
