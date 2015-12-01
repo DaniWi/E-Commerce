@@ -1,5 +1,9 @@
 #
+<<<<<<< HEAD
 #Tue Dec 01 12:28:31 CET 2015
+=======
+#Tue Dec 01 12:18:19 CET 2015
+>>>>>>> origin/master
 org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
 eclipse.preferences.version=1
