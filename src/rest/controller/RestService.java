@@ -94,9 +94,9 @@ public class RestService {
 	@Consumes("application/x-www-form-urlencoded")
 	public String changeItem(@PathParam("item_index") Integer itemIndex, @FormParam("username") String username,
 			@FormParam("password") String password, @FormParam("title") String title,
-			@FormParam("description") String description) {
+			@FormParam("description") String description, @FormParam("price") double price) {
 
-		return itemController.changeItem(itemIndex, title, description, username, password);
+		return itemController.changeItem(itemIndex, title, description, price, username, password);
 	}
 
 	// DELETE Item
@@ -116,9 +116,9 @@ public class RestService {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public String postNewItem(@PathParam("category") String category, @FormParam("username") String username,
 			@FormParam("password") String password, @FormParam("title") String title,
-			@FormParam("description") String description) {
+			@FormParam("description") String description, @FormParam("price") double price) {
 
-		return itemController.newItem(title, description, category, username, password);
+		return itemController.newItem(title, description, category, price, username, password);
 	}
 
 	// ~~~~~~~~~~ COMMENT Controller ~~~~~~~~~~ //

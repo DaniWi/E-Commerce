@@ -37,7 +37,7 @@ public class ItemController {
 		return htmlUtility.HtmlWrap(htmlUtility.itemToHtml(item));
 	}
 
-	public String changeItem(int itemIndex, String title, String description, String username, String password) {
+	public String changeItem(int itemIndex, String title, String description, double price, String username, String password) {
 
 		IDataHandler dh = databaseHandler;
 
@@ -45,8 +45,9 @@ public class ItemController {
 			Item item = dh.getItemByID(itemIndex);
 			title = (title == null || title.equals("")) ? item.getTitle() : title;
 			description = (description == null || description.equals("")) ? item.getDescription() : description;
+			price = (price < 0) ? item.getPrice() : price;
 
-			dh.changeItem(itemIndex, title, description, item.getAuthorID(), item.getCategoryID());
+			dh.changeItem(itemIndex, title, description, price, item.getAuthorID(), item.getCategoryID());
 
 			return htmlUtility.HtmlWrap(htmlUtility.itemToHtml(dh.getItemByID(itemIndex)));
 		}
@@ -66,7 +67,7 @@ public class ItemController {
 		return htmlUtility.HtmlWrap("No permission to delete items!");
 	}
 
-	public String newItem(String title, String description, String category, String username, String password) {
+	public String newItem(String title, String description, String category, double price, String username, String password) {
 		IDataHandler dh = databaseHandler;
 		User user = dh.getUserLogin(username, password);
 
@@ -75,8 +76,9 @@ public class ItemController {
 				return htmlUtility.HtmlWrap("New Items have to have a title!");
 			}
 			description = (description == null) ? "empty description" : description;
+			price = Math.max(0, price);
 
-			int id = dh.createItem(title, description, user.getId(), dh.getCategoryByName(category).getId()).getId();
+			int id = dh.createItem(title, description, price, user.getId(), dh.getCategoryByName(category).getId()).getId();
 
 			return htmlUtility.HtmlWrap(htmlUtility.itemToHtml(dh.getItemByID(id)));
 		}
