@@ -67,7 +67,7 @@ public class ItemController {
 		return htmlUtility.HtmlWrap("No permission to delete items!");
 	}
 
-	public String newItem(String title, String description, String category, double price, String username, String password) {
+	public String newItem(String title, String description, double price, String category,  String username, String password) {
 		IDataHandler dh = databaseHandler;
 		User user = dh.getUserLogin(username, password);
 

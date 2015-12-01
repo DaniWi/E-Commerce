@@ -118,7 +118,7 @@ public class RestService {
 			@FormParam("password") String password, @FormParam("title") String title,
 			@FormParam("description") String description, @FormParam("price") double price) {
 
-		return itemController.newItem(title, description, category, price, username, password);
+		return itemController.newItem(title, description, price, category, username, password);
 	}
 
 	// ~~~~~~~~~~ COMMENT Controller ~~~~~~~~~~ //
