@@ -1,5 +1,8 @@
 package rest.controller;
 
+import java.util.Collection;
+
+import data.Category;
 import data.DataHandler;
 import data.IDataHandler;
 
@@ -21,6 +24,14 @@ public class CategoryController {
 		this.htmlUtility.setDatabaseHandler(databaseHandler);
 	}
 
+	public Collection<Category> getAllCategories() {
+		return databaseHandler.getAllCategories();
+	}
+	
+	public void deleteCategory(String category) {
+		databaseHandler.deleteCategory(category);
+	}
+	
 	public String newCategory(String category, String username, String password) {
 		if (databaseHandler.getUserLogin(username, password).getRights().equals("admin")) {
 			// only Administators are allowed to create new Categories

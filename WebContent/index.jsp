@@ -35,7 +35,12 @@
 						 <li>
 							  <a href="login.html" title="Login Page"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login </a>
 						 </li>
-						 <%} else {%>
+						 <%} else {
+						 	if(session.getAttribute("rights").equals("admin")) {%>
+						 	<li>
+						  		<a href="../admin/index.html" title="Backend"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Backend </a>
+						 	</li>
+						 	<% } %>
 						 <li>
 							  <a href="logout.jsp" title="Logout Page"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logout - User: <%= session.getAttribute("Username")%> </a>
 						 </li>

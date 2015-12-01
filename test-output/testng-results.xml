@@ -1,53 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" total="3" passed="2">
+<testng-results skipped="0" failed="1" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="87975" started-at="2015-11-24T13:36:20Z" finished-at="2015-11-24T13:37:47Z">
+  <suite name="Default suite" duration-ms="30462" started-at="2015-12-01T15:52:24Z" finished-at="2015-12-01T15:52:54Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="87975" started-at="2015-11-24T13:36:20Z" finished-at="2015-11-24T13:37:47Z">
-      <class name="selenium.UserBrowserTest">
-        <test-method status="PASS" signature="startBrowser()[pri:0, instance:selenium.UserBrowserTest@12050f6]" name="startBrowser" is-config="true" duration-ms="10045" started-at="2015-11-24T14:36:20Z" finished-at="2015-11-24T14:36:30Z">
+    <test name="Default test" duration-ms="30462" started-at="2015-12-01T15:52:24Z" finished-at="2015-12-01T15:52:54Z">
+      <class name="selenium.NewTest">
+        <test-method status="PASS" signature="startBrowser()[pri:0, instance:selenium.NewTest@12050f6]" name="startBrowser" is-config="true" duration-ms="11493" started-at="2015-12-01T16:52:24Z" finished-at="2015-12-01T16:52:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="authenticationTest()[pri:0, instance:selenium.UserBrowserTest@12050f6]" name="authenticationTest" duration-ms="2387" started-at="2015-11-24T14:36:30Z" finished-at="2015-11-24T14:36:32Z">
+        <test-method status="PASS" signature="successfulRegistrationTest()[pri:0, instance:selenium.NewTest@12050f6]" name="successfulRegistrationTest" duration-ms="3089" started-at="2015-12-01T16:52:35Z" finished-at="2015-12-01T16:52:38Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- authenticationTest -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:selenium.UserBrowserTest@12050f6]" name="closeBrowser" is-config="true" duration-ms="15" started-at="2015-11-24T14:36:32Z" finished-at="2015-11-24T14:36:32Z">
+        </test-method> <!-- successfulRegistrationTest -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:selenium.NewTest@12050f6]" name="closeBrowser" is-config="true" duration-ms="15" started-at="2015-12-01T16:52:38Z" finished-at="2015-12-01T16:52:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-        <test-method status="PASS" signature="startBrowser()[pri:0, instance:selenium.UserBrowserTest@12050f6]" name="startBrowser" is-config="true" duration-ms="9990" started-at="2015-11-24T14:36:32Z" finished-at="2015-11-24T14:36:42Z">
+        <test-method status="PASS" signature="startBrowser()[pri:0, instance:selenium.NewTest@12050f6]" name="startBrowser" is-config="true" duration-ms="12537" started-at="2015-12-01T16:52:38Z" finished-at="2015-12-01T16:52:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startBrowser -->
-        <test-method status="PASS" signature="userRightsTest()[pri:0, instance:selenium.UserBrowserTest@12050f6]" name="userRightsTest" duration-ms="23001" started-at="2015-11-24T14:36:42Z" depends-on-methods="selenium.UserBrowserTest.authenticationTest" finished-at="2015-11-24T14:37:05Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- userRightsTest -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:selenium.UserBrowserTest@12050f6]" name="closeBrowser" is-config="true" duration-ms="18" started-at="2015-11-24T14:37:05Z" finished-at="2015-11-24T14:37:05Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser -->
-        <test-method status="PASS" signature="startBrowser()[pri:0, instance:selenium.UserBrowserTest@12050f6]" name="startBrowser" is-config="true" duration-ms="9040" started-at="2015-11-24T14:37:05Z" finished-at="2015-11-24T14:37:14Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- startBrowser -->
-        <test-method status="FAIL" signature="newCommentTest()[pri:0, instance:selenium.UserBrowserTest@12050f6]" name="newCommentTest" duration-ms="33432" started-at="2015-11-24T14:37:14Z" depends-on-methods="selenium.UserBrowserTest.userRightsTest" finished-at="2015-11-24T14:37:47Z">
+        <test-method status="FAIL" signature="unsuccessfulRegistrationTest()[pri:0, instance:selenium.NewTest@12050f6]" name="unsuccessfulRegistrationTest" duration-ms="3285" started-at="2015-12-01T16:52:51Z" depends-on-methods="selenium.NewTest.successfulRegistrationTest" finished-at="2015-12-01T16:52:54Z">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected:<1> but was:<0>]]>
+              <![CDATA[expected:<http://localhost:8080/E-Commerce/register.html> but was:<http://localhost:8080/E-Commerce/index.jsp>]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected:<1> but was:<0>
-	at org.testng.AssertJUnit.fail(AssertJUnit.java:59)
-	at org.testng.AssertJUnit.failNotEquals(AssertJUnit.java:364)
-	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:80)
-	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:245)
-	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:252)
-	at selenium.UserBrowserTest.newCommentTest(UserBrowserTest.java:115)
+              <![CDATA[java.lang.AssertionError: expected:<http://localhost:8080/E-Commerce/register.html> but was:<http://localhost:8080/E-Commerce/index.jsp>
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:101)
+	at org.testng.AssertJUnit.assertEquals(AssertJUnit.java:108)
+	at selenium.NewTest.unsuccessfulRegistrationTest(NewTest.java:80)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -77,12 +62,12 @@
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- newCommentTest -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:selenium.UserBrowserTest@12050f6]" name="closeBrowser" is-config="true" duration-ms="14" started-at="2015-11-24T14:37:47Z" finished-at="2015-11-24T14:37:47Z">
+        </test-method> <!-- unsuccessfulRegistrationTest -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:selenium.NewTest@12050f6]" name="closeBrowser" is-config="true" duration-ms="10" started-at="2015-12-01T16:52:54Z" finished-at="2015-12-01T16:52:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-      </class> <!-- selenium.UserBrowserTest -->
+      </class> <!-- selenium.NewTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

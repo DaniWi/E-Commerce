@@ -109,7 +109,6 @@ public class DataHandler implements IDataHandler {
 			// for connection to database on the tomcat server
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
@@ -749,6 +748,86 @@ public class DataHandler implements IDataHandler {
 		}
 		// no appropriate user found in database
 		return null;
+	}
+
+	@Override
+	public Collection<User> getAllUsers() throws IllegalStateException {
+		Session session = openSession();
+		
+		try {
+			session.beginTransaction();
+			Criteria cr = session.createCriteria(User.class);
+			List<User> results = cr.list();
+			session.getTransaction().commit();
+			return results;
+			
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			throw new IllegalStateException("something went wrong by getting all users");
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public User changeUser(int userID, String rights) throws IllegalStateException {
+		Session session = openSession();
+		
+		try {
+			User account = getUserByID(userID);
+			
+			account.setRights(rights);
+
+			session.update(account);
+
+			session.getTransaction().commit();
+
+			return account;
+			
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			throw new IllegalStateException("something went wrong by changing the users");
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public int getAdminCount() throws IllegalStateException {
+Session session = openSession();
+		
+		try {
+			session.beginTransaction();
+			Criteria cr = session.createCriteria(User.class);
+			cr.add(Restrictions.eq("rights", "admin"));
+			List<User> results = cr.list();
+			session.getTransaction().commit();
+			return results.size();
+			
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			throw new IllegalStateException("something went wrong by getting all users");
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public void deleteCategory(String categoryName) throws IllegalStateException {
+		try {
+			// get item
+			Category category = getCategoryByName(categoryName);
+			Collection<Item> items = getAllItemsFromCategory(category.getId());
+			for (Item item : items) {
+				deleteItem(item.getId());
+			}
+
+			// delete item from database
+			deleteObjectFromDb(category);
+		} catch (IllegalArgumentException e) {
+			System.out.println("deletion or getting item from ID failed");
+			throw new IllegalArgumentException("deletion or getting item from ID failed", e);
+		}
 	}
 
 }
