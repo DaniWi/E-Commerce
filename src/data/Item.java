@@ -18,6 +18,7 @@ public class Item {
 	private int id;
 	private String title;
 	private String description;
+	private double price;
 	private int authorID;
 	private int categoryID;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -47,6 +48,14 @@ public class Item {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public int getAuthorID() {

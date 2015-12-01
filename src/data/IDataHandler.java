@@ -18,13 +18,14 @@ public interface IDataHandler {
 
 	Category createCategory(String name) throws IllegalStateException;
 
-	Item createItem(String title, String description, int authorID, int categoryID) throws IllegalStateException;
+	Item createItem(String title, String description, double price, int authorID, int categoryID)
+			throws IllegalStateException;
 
 	Comment createComment(int itemID, String text, int authorID) throws IllegalStateException;
 
 	User createUser(String name, String email, String password, String rights) throws IllegalStateException;
 
-	Item changeItem(int itemID, String title, String description, int authorID, int categoryID)
+	Item changeItem(int itemID, String title, String description, double price, int authorID, int categoryID)
 			throws IllegalStateException;
 
 	Comment changeComment(int commentID, int itemID, String text, int authorID) throws IllegalStateException;
