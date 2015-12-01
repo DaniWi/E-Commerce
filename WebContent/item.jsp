@@ -89,6 +89,7 @@
 				<h1><%= item.getTitle()%></h1>
 				<p>Von <%= handler.getUserByID(item.getAuthorID()).getName()%></p>
 				<p class="description"><%= item.getDescription()%></p>
+				<p>Price: <%= item.getPrice() %> Euro</p>
 				<p class="myinfo">
 					Creation-Date: <%= item.getCreationDate().toGMTString() %><br>
 					Altertion-Date: <%= item.getAltertionDate().toGMTString() %>

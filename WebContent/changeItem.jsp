@@ -50,6 +50,8 @@
 			  <input type="text" name="Title" id="inputTitle" class="form-control" value="<%= item.getTitle() %>" required autofocus>
 			  <label for="inputDescription" class="sr-only">Description</label>
 			  <textarea class="form-control" rows="5" id="description" name="Description"><%= item.getDescription() %></textarea>
+			  <label for="inputPrice" class="sr-only">Price</label>
+			  <input type="text" name="Price" id="price" class="form-control" value="<%= item.getPrice() %>" required autofocus>
 			  <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
 			</div>
 			</form>

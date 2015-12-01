@@ -41,6 +41,8 @@
 			  <input type="text" name="Title" id="inputTitle" class="form-control" placeholder="Title" required autofocus>
 			  <label for="inputDescription" class="sr-only">Description</label>
 			  <textarea class="form-control" rows="5" id="description" name="Description" placeholder="Description"></textarea>
+			  <label for="inputPrice" class="sr-only">Price</label>
+			  <input type="text" name="Price" id="price" class="form-control" placeholder="9.99" required autofocus>
 			  <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
 			</div>
 			</form>

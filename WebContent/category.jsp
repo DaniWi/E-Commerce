@@ -81,7 +81,8 @@
 				<div class="row item">
 					<div class="col-md-8">
 						<h1><a href="item.jsp?id=<%= item.getId() %>&categoryID=<%= categoryID %>"><%= item.getTitle()%></a></h1>
-						<p>Von <%= handler.getUserByID(item.getAuthorID()).getName()%></p>
+						<p>From <%= handler.getUserByID(item.getAuthorID()).getName()%></p>
+						<p>Price: <%= item.getPrice() %> Euro</p>
 						<p class="myinfo"><%= item.getCreationDate().toGMTString() %></p>
 						<p><button type="button" class="btn btn-primary" data-toggle="popover" title="Added to the shopping basket" onclick="return addToBasket(<%= item.getId()%>)">Into the shopping basket</button></p>
 						<% Collection<Comment> comments = handler.getAllCommentsFromItem(item.getId()); %>
