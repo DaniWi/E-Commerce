@@ -74,21 +74,38 @@
 			%>
 			No items in the shopping basket!	
 			<%  }
-				for(Item item : basket){ %>
+				double totalPrice = 0;
+				for(Item item : basket){ totalPrice += basketSession.get(item.getId())*item.getPrice(); %>
 				<div class="row item" id="item<%= item.getId() %>">
 					<div class="col-md-8">
 						<h1><a href="item.jsp?id=<%= item.getId()%>&categoryID=<%= item.getCategoryID() %>"><%= item.getTitle()%></a></h1>
 						<form class="form-inline">
 							<p>
 								<label>Amount</label>
-	    						<input type="number" id="inputAmount<%= item.getId()%>" class="form-control" min="1" value="<%= basketSession.get(item.getId())%>">
+	    						<input type="number" id="inputAmount<%= item.getId()%>" onchange="return saveBasket(<%= item.getId()%>,<%= item.getPrice()%>)" class="form-control" min="1" value="<%= basketSession.get(item.getId())%>">
+	    						<input type="hidden" id="hiddenAmount<%= item.getId()%>" value=<%= basketSession.get(item.getId())%> />
 	    					</p>
 							<p>
-								<button type="button" class="btn btn-primary" onclick="return deleteItem(<%= item.getId()%>)">Delete</button>
-								<button type="button" class="btn btn-primary" data-toggle="popover" title="Saved" onclick="return saveBasket(<%= item.getId()%>)">Save</button>
+								<button type="button" class="btn btn-primary" onclick="return deleteItem(<%= item.getId()%>,<%= item.getPrice()%>)">Delete</button>
+								<!-- <button type="button" class="btn btn-primary" data-toggle="popover" title="Saved" onclick="return saveBasket(<%= item.getId()%>)">Save</button>  -->
 							</p>
 						</form>
 					</div>
+				</div>
+			<% } 
+			if(basket.size() != 0){
+			%>
+				<div class="row totalprice">
+					<div class="col-md-8">
+						<p>
+							<label>Total Price: </label> <span id="totalPrice"><%= Math.round(totalPrice * 100.0) / 100.0%></span> Euro
+						</p>
+						<p>
+							<a type="button" class="btn btn-primary" href="#">Purchase Basket</a>
+						</p>
+					</div>
+				<div>
+				
 				</div>
 			<% } %>
 		</div>
@@ -104,13 +121,19 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-			function deleteItem(itemID) {
+			function deleteItem(itemID, price) {
 				
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						var elementAmount = "hiddenAmount" + parseInt(itemID);
+						var amount = document.getElementById(elementAmount).value;
 						var element = "item" + parseInt(itemID);
 						document.getElementById(element).remove();
+						var elem = document.getElementById("totalPrice");
+						var total = elem.innerHTML;
+						total = total - amount*price;
+						elem.innerHTML = Math.round(total * 100.0) / 100.0;
 					}
 				}
 				xhttp.open("POST", "deleteItemBasket.jsp", true);
@@ -118,13 +141,31 @@
 				xhttp.send('&id='+itemID);
 			}
 			
-			function saveBasket(itemID) {
+			function saveBasket(itemID, price) {
 				
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", "saveBasket.jsp", true);
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				var element = "inputAmount" + parseInt(itemID)
-				xhttp.send('&itemID='+itemID+'&amount='+document.getElementById(element).value);
+				var element = "inputAmount" + parseInt(itemID);
+				var amount = document.getElementById(element).value;
+				xhttp.send('&itemID='+itemID+'&amount='+ amount);
+				
+				var elem = document.getElementById("totalPrice");
+				var total = parseFloat(elem.innerHTML);
+				var elementAmount = "hiddenAmount" + parseInt(itemID);
+				var prevAmount = document.getElementById(elementAmount).value;
+				if (prevAmount < amount) {
+					// added an additional item
+					total = total + (amount-prevAmount)*price;
+				}
+				else {
+					// removed one item
+					total = total - (prevAmount-amount)*price;
+				}
+				document.getElementById(elementAmount).value = amount;
+				
+				
+				elem.innerHTML = Math.round(total * 100.0) / 100.0;
 			}
 			
 			$(function () { $("[data-toggle = 'popover']").popover(); });
