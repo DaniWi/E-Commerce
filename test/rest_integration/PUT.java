@@ -54,6 +54,7 @@ public class PUT {
 		form.param("password", "Daniel");
 		form.param("title", "Lineare Algebra");
 		form.param("description", "Grundlagen Mathematik");
+		form.param("price", "9.99");
 		final Response response = target.request(MediaType.TEXT_HTML)
 				.put(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE));
 
