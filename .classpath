@@ -42,6 +42,11 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/com.paypal.sdk/rest-api-sdk/1.4.0/3d54e9864dee5f577aa369c1a051a1904a047ffb/rest-api-sdk-1.4.0-sources.jar" kind="lib" path="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/com.paypal.sdk/rest-api-sdk/1.4.0/ce9a510e7d3e705c9166fcc7bce03dc88d43ac54/rest-api-sdk-1.4.0.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.9.9/45c07e00b4cea80ac8715deb749a54d784f7cb6/testng-6.9.9-sources.jar" kind="lib" path="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.9.9/1bf509349476d6a48978cc2b04af9caa907781ab/testng-6.9.9.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
@@ -148,6 +153,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.5.4/ea497e77b3695405373364f8d1d6d9513ef2c8b1/jackson-annotations-2.5.4-sources.jar" kind="lib" path="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.5.4/7a93b60f5d2d43024f34e15893552ee6defdb971/jackson-annotations-2.5.4.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.10/4d2725efe68b9943ba0deaf334bb27116ca6b687/slf4j-api-1.7.10-sources.jar" kind="lib" path="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.10/5b338f206827d88acd890739f400a9b7664e5984/slf4j-api-1.7.10.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
@@ -287,11 +297,6 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry sourcepath="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/563dcb685903c96ce8abbd03adf7fa49e19aa8b4/gson-2.3.1-sources.jar" kind="lib" path="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
-		</attributes>
-	</classpathentry>
 	<classpathentry sourcepath="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.48.2/95c72a3d10e8a7046f12088f95d1e877f5449f98/selenium-api-2.48.2-sources.jar" kind="lib" path="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.48.2/a0ae87eb600f042cf678266221e948d02cf9bce1/selenium-api-2.48.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
@@ -323,6 +328,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/a00123f261762a7c5e0ec916a2c7c8298d29c400/javax.inject-1-sources.jar" kind="lib" path="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/563dcb685903c96ce8abbd03adf7fa49e19aa8b4/gson-2.3.1-sources.jar" kind="lib" path="C:/Users/Nocker/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>

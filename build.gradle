@@ -25,6 +25,10 @@ dependencies {
 	
 	compile 'javax.servlet:javax.servlet-api:3.1.0'
 	
+	// PayPal
+	compile 'com.paypal.sdk:rest-api-sdk:1.4.0'
+	
+	
 	testCompile 'org.testng:testng:6+'
 	testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2+'
 	testCompile 'org.seleniumhq.selenium:selenium-support:2+'

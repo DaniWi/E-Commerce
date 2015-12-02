@@ -92,14 +92,15 @@
 				</div>
 			<% } 
 			if(basket.size() != 0){
+				totalPrice = Math.round(totalPrice * 100.0) / 100.0;
 			%>
 				<div class="row totalprice">
 					<div class="col-md-8">
 						<p>
-							<label>Total Price: </label> <span id="totalPrice"><%= Math.round(totalPrice * 100.0) / 100.0%></span> Euro
+							<label>Total Price: </label> <span id="totalPrice"><%= totalPrice%></span> Euro
 						</p>
 						<p>
-							<a type="button" class="btn btn-primary" href="#">Purchase Basket</a>
+							<a type="button" class="btn btn-primary" id="purchaseButton" href="paypal.jsp?euro=<%= totalPrice%>">Purchase Basket</a>
 						</p>
 					</div>
 				<div>
@@ -162,8 +163,10 @@
 				}
 				document.getElementById(elementAmount).value = amount;
 				
+				total = Math.round(total * 100.0) / 100.0;
+				elem.innerHTML = total;
 				
-				elem.innerHTML = Math.round(total * 100.0) / 100.0;
+				document.getElementById("purchaseButton").href = "paypal.jsp?euro="+total;
 			}
 			
 			$(function () { $("[data-toggle = 'popover']").popover(); });
