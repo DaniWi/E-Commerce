@@ -1,1 +1,6 @@
-<h1>{{title}}</h1><h2>{{hero}} details!</h2>
+<a type="button" class="btn btn-primary" href="index.jsp">Back Home</a>
+<a type="button" class="btn btn-primary" (click)="selectPage(1)">User</a>
+<a type="button" class="btn btn-primary" (click)="selectPage(2)">Category</a>
+<a type="button" class="btn btn-primary" href="changeCategory.jsp">Item</a>
+<users *ng-if="page === 1">loading..</users>
+<categories *ng-if="page === 2">loading..</categories>

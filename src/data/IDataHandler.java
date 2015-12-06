@@ -31,7 +31,7 @@ public interface IDataHandler {
 	Comment changeComment(int commentID, int itemID, String text, int authorID) throws IllegalStateException;
 
 	Category changeCategory(int categoryID, String name) throws IllegalStateException;
-	
+
 	void deleteCategory(String category) throws IllegalStateException;
 
 	void deleteItem(int itemID) throws IllegalArgumentException;
@@ -47,11 +47,11 @@ public interface IDataHandler {
 	Collection<Comment> getAllCommentsFromItem(int itemID) throws IllegalArgumentException, IllegalStateException;
 
 	User getUserLogin(String name, String password) throws IllegalStateException;
-	
+
 	Collection<User> getAllUsers() throws IllegalStateException;
-	
-	User changeUser(int userID, String rights) throws IllegalStateException;
-	
+
+	User changeUser(int userID, String name, String rights) throws IllegalStateException;
+
 	int getAdminCount() throws IllegalStateException;
 
 }

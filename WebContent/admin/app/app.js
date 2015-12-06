@@ -8,27 +8,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
-var User_1 = require('./User');
+var usercomp_1 = require('./usercomp');
+var catcomp_1 = require('./catcomp');
 var AppComponent = (function () {
     function AppComponent() {
-        this.users = [
-            new User_1.User("Daniel", true),
-            new User_1.User("Lukas", true),
-            new User_1.User("Martin", false)
-        ];
+        this.page = 1;
     }
-    AppComponent.prototype.onSelect = function (usr) {
-        this.selectedUser = usr;
-    };
-    AppComponent.prototype.getSelectedClass = function (usr) {
-        return { 'selected': usr === this.selectedUser };
+    AppComponent.prototype.selectPage = function (selectedPage) {
+        this.page = selectedPage;
     };
     AppComponent = __decorate([
         angular2_1.Component({
-            selector: 'my-app',
-            template: "\n        <h2>My Heroes</h2>\n        <ul class=\"heroes\">\n            <li *ng-for=\"#usr of users\" (click)=\"onSelect(usr)\" [ng-class]=\"getSelectedClass(hero)\">\n            <span class=\"badge\">{{usr.name}}</span> {{usr.admin}}\n            </li>\n        </ul>\n        <div *ng-if=\"selectedUser\">\n            <label>name: </label>\n            <div><input [(ng-model)]=\"selectedUser.name\" placeholder=\"name\"></div>\n        </div>",
-            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES],
-            styles: ["\n  .heroes {list-style-type: none; margin-left: 1em; padding: 0; width: 10em;}\n  .heroes li { cursor: pointer; position: relative; left: 0; transition: all 0.2s ease; }\n  .heroes li:hover {color: #369; background-color: #EEE; left: .2em;}\n  .heroes .badge {\n    font-size: small;\n    color: white;\n    padding: 0.1em 0.7em;\n    background-color: #369;\n    line-height: 1em;\n    position: relative;\n    left: -1px;\n    top: -1px;\n  }\n  .selected { background-color: #EEE; color: #369; }\n  "],
+            selector: 'app',
+            templateUrl: 'app/html/template.html',
+            directives: [usercomp_1.UserComponent, catcomp_1.CategoryComponent, angular2_1.CORE_DIRECTIVES],
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

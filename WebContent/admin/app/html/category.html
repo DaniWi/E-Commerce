@@ -1,0 +1,15 @@
+<div class="page-header">
+    <h2>Categoy</h2>
+</div>
+<div class="row item" *ng-for="#cat of categories">
+    <div class="col-md-8">
+        <form class="form-inline">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" value="{{cat.name}}" class="form-control">
+            </div>
+            <button class="btn btn-primary btn-md" (click)="onSave()">Save</button>
+            <button class="btn btn-primary btn-md" (click)="onDelete(cat)">Delete</button>
+        </form>
+    </div>
+</div>

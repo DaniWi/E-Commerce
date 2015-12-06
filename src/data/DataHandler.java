@@ -753,14 +753,14 @@ public class DataHandler implements IDataHandler {
 	@Override
 	public Collection<User> getAllUsers() throws IllegalStateException {
 		Session session = openSession();
-		
+
 		try {
 			session.beginTransaction();
 			Criteria cr = session.createCriteria(User.class);
 			List<User> results = cr.list();
 			session.getTransaction().commit();
 			return results;
-			
+
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by getting all users");
@@ -770,12 +770,14 @@ public class DataHandler implements IDataHandler {
 	}
 
 	@Override
-	public User changeUser(int userID, String rights) throws IllegalStateException {
+	public User changeUser(int userID, String name, String rights) throws IllegalStateException {
 		Session session = openSession();
-		
+
 		try {
 			User account = getUserByID(userID);
-			
+
+			account.setName(name);
+
 			account.setRights(rights);
 
 			session.update(account);
@@ -783,7 +785,7 @@ public class DataHandler implements IDataHandler {
 			session.getTransaction().commit();
 
 			return account;
-			
+
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by changing the users");
@@ -794,8 +796,8 @@ public class DataHandler implements IDataHandler {
 
 	@Override
 	public int getAdminCount() throws IllegalStateException {
-Session session = openSession();
-		
+		Session session = openSession();
+
 		try {
 			session.beginTransaction();
 			Criteria cr = session.createCriteria(User.class);
@@ -803,7 +805,7 @@ Session session = openSession();
 			List<User> results = cr.list();
 			session.getTransaction().commit();
 			return results.size();
-			
+
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			throw new IllegalStateException("something went wrong by getting all users");
