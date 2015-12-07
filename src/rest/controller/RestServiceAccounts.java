@@ -71,6 +71,15 @@ public class RestServiceAccounts {
 			@FormParam("rights") String rights) {
 		IDataHandler dh = DataHandler.getInstance();
 		User account = dh.getUserByID(accountIndex);
+		
+		name = (name.equals("")) ? account.getName() : name;
+		if (account.getRights().equals("admin") && rights.equals("user")) {
+			if(dh.getAdminCount() <= 1) {
+				// would be the last admin changed to user
+				rights = account.getRights(); 
+			}
+		}
+		
 		dh.changeUser(accountIndex, name, rights);
 		return dh.getAllUsers();
 	}

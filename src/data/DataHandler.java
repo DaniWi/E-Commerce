@@ -774,6 +774,8 @@ public class DataHandler implements IDataHandler {
 		Session session = openSession();
 
 		try {
+			session.beginTransaction();
+			
 			User account = getUserByID(userID);
 
 			account.setName(name);
