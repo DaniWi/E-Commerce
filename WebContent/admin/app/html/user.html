@@ -10,11 +10,11 @@
             </div>
             <div class="form-group">
                 <label>Rights</label>
-                <select class="form-control">
-                    <option [(ng-model)]="usr.rights" *ng-if="usr.rights === 'admin'" selected>admin</option>
-                    <option [(ng-model)]="usr.rights" *ng-if="usr.rights !== 'admin'">admin</option>
-                    <option [(ng-model)]="usr.rights" *ng-if="usr.rights === 'user'" selected>user</option>
-                    <option [(ng-model)]="usr.rights" *ng-if="usr.rights !== 'user'">user</option>
+                <select class="form-control" [(ng-model)]="usr.rights">
+                    <option value="admin" *ng-if="usr.rights === 'admin'" selected>admin</option>
+                    <option value="admin" *ng-if="usr.rights !== 'admin'">admin</option>
+                    <option value="user" *ng-if="usr.rights === 'user'" selected>user</option>
+                    <option value="user" *ng-if="usr.rights !== 'user'">user</option>
                 </select>
             </div>
             <button class="btn btn-primary btn-md" (click)="onSave(usr)">Save</button>

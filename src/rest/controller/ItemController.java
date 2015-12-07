@@ -68,6 +68,14 @@ public class ItemController {
 		return htmlUtility.HtmlWrap("No permission to delete items!");
 	}
 
+	public String deleteItem(Integer itemIndex) {
+		IDataHandler dh = databaseHandler;
+
+		dh.deleteItem(itemIndex);
+
+		return htmlUtility.HtmlWrap("Successfully deleted the item!");
+	}
+
 	public String newItem(String title, String description, double price, String category, String username,
 			String password) {
 		IDataHandler dh = databaseHandler;
