@@ -37,7 +37,8 @@ public class ItemController {
 		return htmlUtility.HtmlWrap(htmlUtility.itemToHtml(item));
 	}
 
-	public String changeItem(int itemIndex, String title, String description, double price, String username, String password) {
+	public String changeItem(int itemIndex, String title, String description, double price, String username,
+			String password) {
 
 		IDataHandler dh = databaseHandler;
 
@@ -67,7 +68,8 @@ public class ItemController {
 		return htmlUtility.HtmlWrap("No permission to delete items!");
 	}
 
-	public String newItem(String title, String description, double price, String category,  String username, String password) {
+	public String newItem(String title, String description, double price, String category, String username,
+			String password) {
 		IDataHandler dh = databaseHandler;
 		User user = dh.getUserLogin(username, password);
 
@@ -78,7 +80,8 @@ public class ItemController {
 			description = (description == null) ? "empty description" : description;
 			price = Math.max(0, price);
 
-			int id = dh.createItem(title, description, price, user.getId(), dh.getCategoryByName(category).getId()).getId();
+			int id = dh.createItem(title, description, price, user.getId(), dh.getCategoryByName(category).getId())
+					.getId();
 
 			return htmlUtility.HtmlWrap(htmlUtility.itemToHtml(dh.getItemByID(id)));
 		}
@@ -89,6 +92,11 @@ public class ItemController {
 	public Collection<Item> getAllItemsOfCategory(String category) {
 		IDataHandler dh = databaseHandler;
 		return dh.getAllItemsFromCategory(dh.getCategoryByName(category).getId());
+	}
+
+	public Collection<Item> getAllItems() {
+		IDataHandler dh = databaseHandler;
+		return dh.getAllItems();
 	}
 
 	public String getAllItemsOfCategoryAsHtml(String category) {

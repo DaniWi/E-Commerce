@@ -44,6 +44,8 @@ public interface IDataHandler {
 
 	Collection<Item> getAllItemsFromCategory(int categoryID) throws IllegalStateException;
 
+	Collection<Item> getAllItems() throws IllegalStateException;
+
 	Collection<Comment> getAllCommentsFromItem(int itemID) throws IllegalArgumentException, IllegalStateException;
 
 	User getUserLogin(String name, String password) throws IllegalStateException;

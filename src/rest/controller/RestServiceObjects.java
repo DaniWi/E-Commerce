@@ -30,14 +30,14 @@ public class RestServiceObjects {
 	}
 
 	// ~~~~~~~~~~ CATEGORY Controller ~~~~~~~~~~ //
-	
+
 	// Get All Categories
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Category> getAllCategoriesAsJson() {
 		return categoryController.getAllCategories();
 	}
-	
+
 	// Delete Category
 	@DELETE
 	@Path("/{category}")
@@ -46,7 +46,7 @@ public class RestServiceObjects {
 		categoryController.deleteCategory(category);
 		return getAllCategoriesAsJson();
 	}
-	
+
 	// New Category
 	@POST
 	@Path("/{category}")

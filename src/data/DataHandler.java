@@ -661,6 +661,38 @@ public class DataHandler implements IDataHandler {
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see data.IDataHandler#getAllItems(int)
+	 */
+	@Override
+	public Collection<Item> getAllItems() throws IllegalStateException {
+		Session session = openSession();
+
+		try {
+
+			// begin transaction
+			session.beginTransaction();
+
+			Criteria cr = session.createCriteria(Item.class);
+			List<Item> results = cr.list();
+
+			// commit
+			session.getTransaction().commit();
+
+			return results;
+
+		} catch (Exception e) {
+			// Exception -> rollback
+			session.getTransaction().rollback();
+			throw new IllegalStateException("something went wrong by getting the item list");
+		} finally {
+			// close session
+			session.close();
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see data.IDataHandler#getAllCommentsFromItem(int)
 	 */
 	@Override

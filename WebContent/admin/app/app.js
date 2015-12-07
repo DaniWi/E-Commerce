@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var angular2_1 = require('angular2/angular2');
 var usercomp_1 = require('./usercomp');
 var catcomp_1 = require('./catcomp');
+var itemcomp_1 = require('./itemcomp');
 var AppComponent = (function () {
     function AppComponent() {
         this.page = 1;
@@ -21,7 +22,7 @@ var AppComponent = (function () {
         angular2_1.Component({
             selector: 'app',
             templateUrl: 'app/html/template.html',
-            directives: [usercomp_1.UserComponent, catcomp_1.CategoryComponent, angular2_1.CORE_DIRECTIVES],
+            directives: [usercomp_1.UserComponent, catcomp_1.CategoryComponent, itemcomp_1.ItemComponent, angular2_1.CORE_DIRECTIVES],
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

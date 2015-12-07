@@ -9,35 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var angular2_1 = require('angular2/angular2');
 var http_1 = require('angular2/http');
-var CategoryComponent = (function () {
-    function CategoryComponent(http) {
+var ItemComponent = (function () {
+    function ItemComponent(http) {
         this.http = http;
         this.getData();
     }
-    CategoryComponent.prototype.onDelete = function (cat) {
-        var index = this.categories.indexOf(cat);
-        this.categories.splice(index, 1);
+    ItemComponent.prototype.onDelete = function (item) {
+        var index = this.items.indexOf(item);
+        this.items.splice(index, 1);
     };
-    CategoryComponent.prototype.getData = function () {
+    ItemComponent.prototype.getData = function () {
         var _this = this;
-        this.http.get('http://localhost:8080/E-Commerce/rest/category')
+        this.http.get('http://localhost:8080/E-Commerce/rest/items')
             .map(function (res) { return res.json(); })
-            .subscribe(function (data) { return _this.categories = data; }, function (err) { return _this.logError(err); }, function () { return console.log('categories complete'); });
+            .subscribe(function (data) { return _this.items = data; }, function (err) { return _this.logError(err); }, function () { return console.log('Items complete'); });
     };
-    CategoryComponent.prototype.logError = function (err) {
+    ItemComponent.prototype.logError = function (err) {
         console.log(err);
     };
-    CategoryComponent = __decorate([
+    ItemComponent = __decorate([
         angular2_1.Component({
-            selector: 'categories',
-            templateUrl: 'app/html/category.html',
+            selector: 'items',
+            templateUrl: 'app/html/item.html',
             viewProviders: [http_1.HTTP_PROVIDERS],
             directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES],
         }), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], CategoryComponent);
-    return CategoryComponent;
+    ], ItemComponent);
+    return ItemComponent;
 })();
-exports.CategoryComponent = CategoryComponent;
-angular2_1.bootstrap(CategoryComponent);
-//# sourceMappingURL=catcomp.js.map
+exports.ItemComponent = ItemComponent;
+angular2_1.bootstrap(ItemComponent);
+//# sourceMappingURL=itemcomp.js.map
