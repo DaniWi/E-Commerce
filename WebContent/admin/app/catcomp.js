@@ -15,12 +15,16 @@ var CategoryComponent = (function () {
         this.getData();
     }
     CategoryComponent.prototype.onDelete = function (cat) {
+        var _this = this;
         var index = this.categories.indexOf(cat);
         this.categories.splice(index, 1);
+        this.http.delete('../rest/category/' + cat.name)
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) { return _this.response = data; }, function (err) { return _this.logError(err); }, function () { return console.log('Deletion complete'); });
     };
     CategoryComponent.prototype.getData = function () {
         var _this = this;
-        this.http.get('http://localhost:8080/E-Commerce/rest/category')
+        this.http.get('../rest/category')
             .map(function (res) { return res.json(); })
             .subscribe(function (data) { return _this.categories = data; }, function (err) { return _this.logError(err); }, function () { return console.log('categories complete'); });
     };

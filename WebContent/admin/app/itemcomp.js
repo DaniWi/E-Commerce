@@ -15,8 +15,12 @@ var ItemComponent = (function () {
         this.getData();
     }
     ItemComponent.prototype.onDelete = function (item) {
+        var _this = this;
         var index = this.items.indexOf(item);
         this.items.splice(index, 1);
+        this.http.delete('http://localhost:8080/E-Commerce/rest/category/' + usr.id)
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) { return _this.response = data; }, function (err) { return _this.logError(err); }, function () { return console.log('Deletion complete'); });
     };
     ItemComponent.prototype.getData = function () {
         var _this = this;

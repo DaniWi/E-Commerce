@@ -18,7 +18,7 @@ var UserComponent = (function () {
         var _this = this;
         var index = this.users.indexOf(usr);
         this.users.splice(index, 1);
-        this.http.delete('http://localhost:8080/E-Commerce/rest/accounts/' + usr.id)
+        this.http.delete('../rest/accounts/' + usr.id)
             .map(function (res) { return res.json(); })
             .subscribe(function (data) { return _this.response = data; }, function (err) { return _this.logError(err); }, function () { return console.log('Deletion complete'); });
     };
@@ -27,7 +27,7 @@ var UserComponent = (function () {
         var body = "name=" + usr.name + "&rights=" + usr.rights;
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.put('http://localhost:8080/E-Commerce/rest/accounts/' + usr.id, body, {
+        this.http.put('../rest/accounts/' + usr.id, body, {
             headers: headers
         })
             .map(function (res) { return res.json(); })
