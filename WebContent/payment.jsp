@@ -1,3 +1,4 @@
+<%@page import="com.paypal.base.rest.APIContext"%>
 <%@page import="com.paypal.api.payments.PaymentExecution"%>
 <%@page import="com.paypal.api.payments.Payment"%>
 <%@page import="com.paypal.base.rest.OAuthTokenCredential"%>
@@ -13,20 +14,21 @@
 	
 	Map<String, String> sdkConfig = new HashMap<String, String>();
 	sdkConfig.put("mode", "sandbox");
+	
 	String accessToken = new OAuthTokenCredential(CLIENT_ID,CLIENT_SECRET, sdkConfig).getAccessToken();
+	APIContext apiContext = new APIContext(accessToken);
+	apiContext.setConfigurationMap(sdkConfig);
 	
 	// Payment payment = Payment.get(request.getParameter("token"), request.getParameter("paymentId"));
-	Payment payment = Payment.get(accessToken, request.getParameter("paymentId"));
+	String parameter = request.getParameter("paymentId");
+	Payment payment = Payment.get(apiContext, parameter);
 	
 	PaymentExecution paymentExecution = new PaymentExecution();
 	paymentExecution.setPayerId(request.getParameter("PayerID"));
 	
 	// Payment newPayment = payment.execute(request.getParameter("token"), paymentExecution);
-	Payment newPayment = payment.execute(accessToken, paymentExecution);
-	 
+	Payment newPayment = payment.execute(apiContext, paymentExecution);
+	
+	session.removeAttribute("basket");
+	response.sendRedirect("index.jsp");
 %>
-<!-- 
-paymentID : <%= request.getParameter("paymentId") %>
-token     : <%= request.getParameter("token") %>
-payerID   : <%= request.getParameter("PayerID") %>
- -->
