@@ -20,28 +20,36 @@ https://github.com/DaniWi/E-Commerce
 
 
 REST-Schnittstelle:
-GET rest/{category}						alle Einträge der mitgegebenen Kategorie
-GET rest/{category}/{item_index}				Eintrag mit ItemID=item_index
-GET rest/{category}/{item_index}/comment			alle Kommentare von Item mit ItemID=item_index
-GET rest/{category}/{item_index}/comment/{comment_index}	Kommentar mit CommentID=comment_index
+GET rest/category							alle Kategorien
+GET rest/category/{category}						alle Einträge der mitgegebenen Kategorie
+GET rest/category/{category}/{item_index}				Eintrag mit ItemID=item_index
+GET rest/category/{category}/{item_index}/comment			alle Kommentare von Item mit ItemID=item_index
+GET rest/category/{category}/{item_index}/comment/{comment_index}	Kommentar mit CommentID=comment_index
+GET rest/items								alle Items
+GET rest/accounts							alle Accounts
 
 alle GET liefern entweder HTML oder JSON retour, muss nur der accept-Eintrag im Header gesetzt werden
 
-PUT rest/{category}						ändert Kategory mit Name in URI zu neuen Name im Parameter
+PUT rest/category/{category}						ändert Kategory mit Name in URI zu neuen Name im Parameter
 Parameter: name
-PUT rest/{category}/{item_index}				ändert einen Eintrag mit ID=item_index
+PUT rest/category/{category}/{item_index}				ändert einen Eintrag mit ID=item_index
 Parameter: title, description
-PUT rest/{category}/{item_index}/comment/{comment_index}	ändert ein Kommentar mit ID=comment_index
+PUT rest/category/{category}/{item_index}/comment/{comment_index}	ändert ein Kommentar mit ID=comment_index
+Parameter: text
+PUT rest/accounts/{account_index}/toAdmin				ändert einen Account zum Admin
+PUT rest/accounts/{account_index}/toUser				ändert einen Account zum User (ausser letzter Admin)
+
+POST rest/category/{category}						legt neue Kategorie an mit Name in URI
+POST rest/category/{category}/item					Legt neues Item an
+Parameter: title, description
+POST rest/category/{category}/{item_index}/comment			legt neues Kommentar an
 Parameter: text
 
-POST rest/{category}						legt neue Kategorie an mit Name in URI
-POST rest/{category}/item							Legt neues Item an
-Parameter: title, description
-POST rest/{category}/{item_index}/comment			legt neues Kommentar an
-Parameter: text
-
-DELETE rest/{category}/{item_index}				löscht Item mit ID=item_index
-DELETE rest/{category}//{item_index}/comment/{comment_index}	löscht Kommentar mit ID=comment_index
+DELETE rest/category/{category}						löscht Kategorie mit name=category
+DELETE rest/category/{category}/{item_index}				löscht Item mit ID=item_index
+DELETE rest/category/{category}//{item_index}/comment/{comment_index}	löscht Kommentar mit ID=comment_index
+DELETE rest/items/{item_index}						löscht Item mit ID=item_index
+DELETE rest/accounts/{account_index}					löscht Account mit ID=account_index
 
 
 Bei allen POST,PUT und DELETE Anfragen muss man als Parameter noch zusätzlich username und password mitgegeben, damit

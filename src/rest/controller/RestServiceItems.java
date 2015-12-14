@@ -19,7 +19,7 @@ public class RestServiceItems {
 		itemController.setDatabaseHandler();
 	}
 
-	// GET All Items of a Category (JSON)
+	// GET All Items (JSON)
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<Item> getAllItemsAsJson() {
