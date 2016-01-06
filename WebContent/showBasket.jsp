@@ -51,7 +51,10 @@
 							 	</li>
 							 	<% } %>
 						 <li>
-							  <a href="logout.jsp" title="Logout Page"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logout - User: <%= session.getAttribute("Username")%> </a>
+						 	<a href="profile.jsp" title="Profile Page"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= session.getAttribute("Username")%> </a>
+						 </li>
+						 <li>
+						 	<a href="logout.jsp" title="Logout"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Logout </a>
 						 </li>
 						<% } %>
 					</ul>
