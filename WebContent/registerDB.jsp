@@ -9,8 +9,11 @@
 	} else {
 		rights = "user";
 	}
-		
-	handler.createUser(request.getParameter("Username"), request.getParameter("Email"), request.getParameter("Password"), rights);
+	
+	double lat = Double.valueOf(request.getParameter("Latitude"));
+	double lon = Double.valueOf(request.getParameter("Longitude"));
+	
+	handler.createUser(request.getParameter("Username"), request.getParameter("Email"), request.getParameter("Password"), rights, request.getParameter("Address"), lat, lon);
 	
 	response.sendRedirect("index.jsp");
 %>

@@ -391,7 +391,7 @@ public class DataHandler implements IDataHandler {
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public User createUser(String name, String email, String password, String rights) throws IllegalStateException {
+	public User createUser(String name, String email, String password, String rights, String address, double latitude, double longitude) throws IllegalStateException {
 
 		// create user instance
 		User user = new User();
@@ -399,6 +399,9 @@ public class DataHandler implements IDataHandler {
 		user.setJoinedDate(new Date());
 		user.setName(name);
 		user.setRights(rights);
+		user.setAddress(address);
+		user.setLatitude(latitude);
+		user.setLongitude(longitude);
 		try {
 			user.setPassword(PasswordHash.getSaltedHash(password));
 		} catch (Exception e) {

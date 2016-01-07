@@ -8,21 +8,19 @@ public class InitialUpload {
 		// get handler
 		IDataHandler handler = DataHandler.getInstance();
 
-		int userID1 = handler.createUser("Daniel", "daniel.witsch@gmx.at", "Daniel", "admin").getId();
-		int userID2 = handler.createUser("Lukas", "test@gmx.at", "Lukas", "user").getId();
+		int userID1 = handler.createUser("Daniel", "daniel.witsch@gmx.at", "Daniel", "admin", "Innrain 52d, Innsbruck", 47.264080, 11.384550).getId();
+		int userID2 = handler.createUser("Lukas", "test@gmx.at", "Lukas", "user", "Boltzmannstraße 3, München", 48.262298, 11.669776).getId();
 
 		int catID1 = handler.createCategory("Books").getId();
 		int catID2 = handler.createCategory("Clothing").getId();
 		int catID3 = handler.createCategory("Electronics").getId();
 		int catID4 = handler.createCategory("Sports").getId();
 
-		int itemID1 = handler
-				.createItem("Java ist eine Insel", "Das umfassende Handbuch zu Java", 24.99, userID1, catID1).getId();
+		int itemID1 = handler.createItem("Java ist eine Insel", "Das umfassende Handbuch zu Java", 24.99, userID1, catID1).getId();
 		int itemID2 = handler.createItem("Lineare Algebra", "Grundlagen Mathematik", 34.99, userID1, catID1).getId();
 		int itemID3 = handler.createItem("T-Shirt", "rotes T-Shirt", 9.99, userID1, catID2).getId();
 		int itemID4 = handler.createItem("Pullover", "grüner Rollkragenpullover", 24.99, userID1, catID2).getId();
-		int itemID5 = handler.createItem("Samsung Galaxy S6", "neues Modell der Galaxy-Reige", 449.99, userID2, catID3)
-				.getId();
+		int itemID5 = handler.createItem("Samsung Galaxy S6", "neues Modell der Galaxy-Reige", 449.99, userID2, catID3).getId();
 		int itemID6 = handler.createItem("Sony LED TV", "42 Zoll LED Monitor", 999.99, userID2, catID3).getId();
 
 		int commentID1 = handler.createComment(itemID1, "Comment1", userID1).getId();

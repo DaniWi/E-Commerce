@@ -22,6 +22,9 @@ public class User {
 	private String rights;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date joinedDate = new Date();
+	private String address;
+	private double latitude;
+	private double longitude;
 
 	public int getId() {
 		return id;
@@ -69,6 +72,30 @@ public class User {
 
 	public void setJoinedDate(Date joinedDate) {
 		this.joinedDate = joinedDate;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
 	@Override

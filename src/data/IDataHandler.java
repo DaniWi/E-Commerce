@@ -23,7 +23,7 @@ public interface IDataHandler {
 
 	Comment createComment(int itemID, String text, int authorID) throws IllegalStateException;
 
-	User createUser(String name, String email, String password, String rights) throws IllegalStateException;
+	User createUser(String name, String email, String password, String rights, String address, double latitude, double longitude) throws IllegalStateException;
 
 	Item changeItem(int itemID, String title, String description, double price, int authorID, int categoryID)
 			throws IllegalStateException;

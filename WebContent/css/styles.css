@@ -49,3 +49,8 @@ form input {
 .totalprice {
 	padding: 10px 0;
 }
+
+.map {
+    height: 400px;
+	width: 100%;
+}
