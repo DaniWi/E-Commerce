@@ -77,11 +77,6 @@
 			</div>
 			<div id="map" class="map"></div>
 		    <script type="text/javascript">
-			    
-		      	
-		      	// HTML5 Geolocation (Lat and Lon)
-		        //navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options)
-		        
 		      	var xmlhttp = new XMLHttpRequest();
 				var url = "http://nominatim.openstreetmap.org/search/<%=user.getAddress()%>?format=json";
 				
@@ -96,10 +91,12 @@
 				        var userLat = "<%= user.getLatitude() %>";
 				        var userLon = "<%= user.getLongitude() %>";
 				        if (myArr.length < 1) {
+				        	// no result found -> use saved lat/lon
 				        	lat = userLat;
 				        	lon = userLon;
 				        }
 				        else if (myArr.length > 1) {
+				        	// more than 1 result -> use the one nearest to saved lat/lon
 				        	var i;
 				        	lat = myArr[0].lat;
 				        	lon = myArr[0].lon;
@@ -114,6 +111,7 @@
 				        	}
 				        }
 				        else {
+				        	// exactly one result -> use that one
 				        	lat = myArr[0].lat;
 				        	lon = myArr[0].lon;
 				        }
@@ -126,9 +124,7 @@
 				function OpenLayersMap(strlat, strlon) {
 					var lat = parseFloat(strlat);
 					var lon = parseFloat(strlon);
-					var vectorSource = new ol.source.Vector({
-			    		//source: vectorSource
-			    	});
+					var vectorSource = new ol.source.Vector({ });
 					var iconFeature = new ol.Feature({
 			    		geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857')),
 			    		/*
@@ -153,11 +149,6 @@
 			    	      source: vectorSource,
 			    	      style: iconStyle
 		    	    });
-			    	
-			    	
-			    	var bottomLayer = new ol.layer.Tile({
-	            		source: new ol.source.MapQuest({layer: 'osm'})
-	          		});
 			    
 			      	var map = new ol.Map({
 			        	target: 'map',

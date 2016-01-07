@@ -83,7 +83,7 @@
 		  		<a type="button" class="btn btn-primary" href="newItem.jsp">New Item</a>
 		    <%}%>
 			<div class="page-header">
-				<h2><%= category.getName() %></h2>
+				<h2><%= category.getName() %></h2><a href="shops.jsp?categoryID=<%= category.getId()%>"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>Shops around you</a>
 			</div>
 			<% for(Item item : items){ %>
 				<div class="row item">
