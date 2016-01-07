@@ -13,6 +13,5 @@
 <title>Logout</title>
 </head>
 <body>
-
 </body>
 </html>
