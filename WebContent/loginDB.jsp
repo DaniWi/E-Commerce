@@ -15,7 +15,7 @@
 	} else {
 		User user = handler.getUserLogin(request.getParameter("Username"), request.getParameter("id"));
 		if(user == null){
-			user = handler.createUser(request.getParameter("Username"), request.getParameter("email"), request.getParameter("id"), "user");
+			user = handler.createUser(request.getParameter("Username"), request.getParameter("email"), request.getParameter("id"), "user","Innsbruck, Maria-Theresien-Straße",47.265647,11.394225);
 		}
 		
 		session.setAttribute("Username", user.getName());
