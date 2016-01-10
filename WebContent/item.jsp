@@ -16,6 +16,10 @@
 <html>
 	<head>
 		<title>Webshop 4</title>
+		<meta property="og:url"           content="http://10.171.154.227/E-Commerce/item.jsp?id=<%= item.getId() %>&categoryID=<%= item.getCategoryID() %>" />
+		<meta property="og:type"          content="website" />
+		<meta property="og:title"         content="<%= item.getTitle() %>" />
+		<meta property="og:description"   content="<%= item.getDescription() %>" />
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		
@@ -26,6 +30,15 @@
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body id="page_item">
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+		
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 			  <!-- Brand and toggle get grouped for better mobile display -->
@@ -95,7 +108,10 @@
 					Creation-Date: <%= item.getCreationDate().toGMTString() %><br>
 					Altertion-Date: <%= item.getAltertionDate().toGMTString() %>
 				</p>
-				<p><button type="button" class="btn btn-primary" data-toggle="popover" title="Added to the shopping basket" onclick="return addToBasket(<%= item.getId()%>)">Into the shopping basket</button></p>
+				<p>
+					<button type="button" class="btn btn-primary" data-toggle="popover" title="Added to the shopping basket" onclick="return addToBasket(<%= item.getId()%>)">Into the shopping basket</button>
+					<div class="fb-share-button" data-href="http://10.171.154.227/E-Commerce/item.jsp?id=<%= item.getId() %>&categoryID=<%= item.getCategoryID() %>" data-layout="button"></div>
+				</p>
 				<div id="allComments">
 				<% Collection<Comment> comments = handler.getAllCommentsFromItem(item.getId()); %>
 						<% for(Comment comment : comments) { %>
