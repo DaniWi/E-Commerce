@@ -17,6 +17,9 @@ https://github.com/DaniWi/E-Commerce
 5.Im Browser localhost:8080/E-Commerce/ aufrufen, somit landet man auf der Startseite
 6.Im Browser localhost:8080/E-Commerce/rest/* aufrufen, um auf REST-Schnittstelle zuzugreifen
   Im Browser sind nur GET-Abfragen möglich.
+7.Damit der Facebook-Share-Button richtig funktioniert, müssen im File item.jsp die Öffentliche IP-Adresse
+  des Internetzugangs angegeben werden, von dem aus der Server läuft. Mit der richtigen Konfiguration des Routers, ist
+  die Website dann öffentliche erreichbar.
 
 
 REST-Schnittstelle:
